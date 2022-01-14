@@ -1,18 +1,35 @@
 package application;
 	
+import java.io.IOException;
+
 import client.Client;
 import client.ClientPanel;
+import common.DB;
+import gui.AuthController;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
 
 public class MainGUI extends Application {
 	@Override
-	public void start(Stage primaryStage) {
-		try {
+	public void start(Stage primaryStage) throws IOException {
+		
+		//DB.getConnection();
+		
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(this.getClass().getResource("/gui/Auth.fxml"));
+		
+		Parent root = loader.load();
+		stage.setScene(new Scene(root));
+		stage.showAndWait();
+		
+		/*try {
 			Group root = new Group();
 			ClientPanel cp = new ClientPanel();
 			root.getChildren().add(cp);
@@ -30,7 +47,7 @@ public class MainGUI extends Application {
 			
 		} catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public static void main(String[] args) {

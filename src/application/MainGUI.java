@@ -1,6 +1,7 @@
 package application;
 	
 import java.io.IOException;
+import java.sql.SQLException;
 
 import client.Client;
 import client.ClientPanel;
@@ -19,15 +20,21 @@ public class MainGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
-		//DB.getConnection();
-		
-		Stage stage = new Stage();
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(this.getClass().getResource("/gui/Auth.fxml"));
-		
-		Parent root = loader.load();
-		stage.setScene(new Scene(root));
-		stage.showAndWait();
+		try {
+			DB.getInstance();
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(this.getClass().getResource("/gui/Auth.fxml"));
+			
+			Parent root = loader.load();
+			AuthController ctlr = loader.getController();
+			ctlr.initialize(stage);
+			stage.setScene(new Scene(root));
+			stage.showAndWait();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Impossible de se connecter à la base de données.");
+		}
 		
 		/*try {
 			Group root = new Group();

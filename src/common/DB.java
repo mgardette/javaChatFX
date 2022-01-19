@@ -8,27 +8,23 @@ import java.sql.Statement;
 
 public class DB {
 	
-	public static Connection connection;
+	private static DB instance;
 	
-	private DB() {
-		try {
-			connection = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-ora.univ-lyon1.fr:1521:cdb1", "p2110997", "623816");
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
+	private static Connection connection;
+	
+	private DB() throws SQLException {
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@iutdoua-ora.univ-lyon1.fr:1521:cdb1", "p2110997", "623816");
 	}
 	
+	public static DB getInstance() throws SQLException {
+		if(instance == null) {
+			instance = new DB();
+		}
+		return instance;
+	}
+
 	public static Connection getConnection() {
 		return connection;
-	}
-	
-	public ResultSet query(String sql) {
-		try (Statement stm = connection.createStatement()) {
-		      return stm.executeQuery(sql);
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-			return null;
-		}
 	}
 	
 }

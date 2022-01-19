@@ -51,7 +51,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </PasswordField>
-            <Label fx:id="no_account" text="Je n'ai pas de compte" underline="true">
+            <Label fx:id="no_account" onMouseReleased="#nouveau_compte" text="Je n'ai pas de compte" underline="true">
                <font>
                   <Font size="11.0" />
                </font>
@@ -59,12 +59,24 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <HBox alignment="TOP_RIGHT">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="connect_button" alignment="BOTTOM_RIGHT" mnemonicParsing="false" text="Se connecter" textAlignment="CENTER" />
+                  <Label fx:id="input_error" alignment="CENTER" text="Nom ou mot de passe invalide" textFill="#d70000" visible="false">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
                </children>
                <VBox.margin>
-                  <Insets bottom="20.0" top="10.0" />
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_RIGHT">
+               <children>
+                  <Button fx:id="connect_button" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#se_connecter" text="Se connecter" textAlignment="CENTER" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="5.0" />
                </VBox.margin>
             </HBox>
          </children>

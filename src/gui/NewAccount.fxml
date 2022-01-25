@@ -101,7 +101,7 @@
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="cancel_button" alignment="CENTER" layoutX="330.0" layoutY="10.0" mnemonicParsing="false" prefWidth="75.0" text="Annuler" textAlignment="CENTER" />
+                  <Button fx:id="cancel_button" alignment="CENTER" layoutX="330.0" layoutY="10.0" mnemonicParsing="false" onAction="#annuler" prefWidth="75.0" text="Annuler" textAlignment="CENTER" />
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" top="20.0" />

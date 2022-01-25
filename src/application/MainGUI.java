@@ -9,6 +9,7 @@ import common.DB;
 import gui.AuthController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -30,6 +31,7 @@ public class MainGUI extends Application {
 			AuthController ctlr = loader.getController();
 			ctlr.initialize(stage);
 			stage.setScene(new Scene(root));
+			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.showAndWait();
 		} catch (SQLException e) {
 			e.printStackTrace();

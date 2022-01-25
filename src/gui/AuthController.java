@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AuthController {
@@ -84,6 +85,7 @@ public class AuthController {
 		NewAccountController ctlr = loader.getController();
 		ctlr.initialize(stage);
 		stage.setScene(new Scene(root));
+		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.showAndWait();
     }
     

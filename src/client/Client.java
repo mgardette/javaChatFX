@@ -15,7 +15,7 @@ public class Client {
 	private Socket socket;
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
-	private ClientPanel view;
+	private String pseudo;	
 	
 	public Client(String address, int port) throws UnknownHostException, IOException {
 		super();
@@ -42,11 +42,11 @@ public class Client {
 	}
 	
 	public void messageReceived(Message mess) {
-		view.printNewMessage(mess);
+		//view.printNewMessage(mess);
 	}
 
 	public void setView(ClientPanel view) {
-		this.view = view;
+		//this.view = view;
 	}
 
 	public Socket getSocket() {

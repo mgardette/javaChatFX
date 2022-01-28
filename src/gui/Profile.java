@@ -4,10 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
 public class Profile {
-	
+
     @FXML
     private Button btnPlay;
 
@@ -15,10 +15,7 @@ public class Profile {
     private Button btnPrvChat;
 
     @FXML
-    private Label desc;
-
-    @FXML
-    private Label histoFive;
+    private Button cancelBtn;
 
     @FXML
     private Label histoFour;
@@ -33,25 +30,23 @@ public class Profile {
     private Label histoTwo;
 
     @FXML
-    private Label profilePicture;
+    private Button modifBtn;
+
+    @FXML
+    private ImageView profilePicture;
 
     @FXML
     private Label rankingName;
 
     @FXML
-    private Label rankingPicture;
+    private ImageView rankingPicture;
 
     @FXML
     private Label usersProfile;
 
-    public void initialize() {
-		/*this.histoOne = ;
-		this.histoTwo = ;
-		this.histoThree = ;
-		this.histoFour = ;
-		this.histoFive = ;*/
-	}
-    
+    @FXML
+    private Button validateBtn;
+
     @FXML
     void openPrivateChat(ActionEvent event) {
 

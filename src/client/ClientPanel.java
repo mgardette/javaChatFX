@@ -101,11 +101,4 @@ public class ClientPanel extends Parent {
 			}
 		});
 	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	
-	
 }

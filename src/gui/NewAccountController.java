@@ -87,5 +87,9 @@ public class NewAccountController {
     	}
     	return isCorrect;
     }
+    
+    public void annuler() {
+    	currentWindow.close();
+    }
 
 }

@@ -9,6 +9,7 @@ import common.DB;
 import gui.AuthController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Parent;

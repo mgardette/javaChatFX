@@ -48,7 +48,7 @@ public class AuthController {
     	if(rs.next()) {
     		try {
 				Client client;
-				client = new Client("127.0.0.1", 5000);
+				client = new Client("127.0.0.1", 5000, pseudo_input.getText());
 	    		currentWindow.close();
 	    		Stage stage = new Stage();
 	    		FXMLLoader loader = new FXMLLoader();

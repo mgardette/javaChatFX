@@ -45,7 +45,7 @@ public class PublicChatController {
     
     public void sendText() {
     	if(!textToSend.getText().trim().isEmpty()) {
-			Message mess = new Message("user", textToSend.getText());
+			Message mess = new Message(client.getPseudo(), textToSend.getText());
 			printNewMessage(mess);
 			clearText();
 			try {

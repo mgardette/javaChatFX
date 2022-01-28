@@ -15,12 +15,13 @@ public class Client {
 	private Socket socket;
 	private ObjectInputStream in;
 	private ObjectOutputStream out;
-	private String pseudo;	
+	private String pseudo;
 	
-	public Client(String address, int port) throws UnknownHostException, IOException {
+	public Client(String address, int port, String pseudo) throws UnknownHostException, IOException {
 		super();
 		this.address = address;
 		this.port = port;
+		this.pseudo = pseudo;
 		
 		this.socket = new Socket(address, port);
 		out = new ObjectOutputStream(socket.getOutputStream());
@@ -57,6 +58,8 @@ public class Client {
 		return out;
 	}
 	
-	
+	public String getPseudo() {
+		return pseudo;
+	}
 
 }

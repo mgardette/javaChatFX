@@ -16,6 +16,7 @@ public class ConnectedClient implements Runnable {
 	private Socket socket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
+	private String pseudo;		
 	
 	public ConnectedClient(Server server, Socket socket) {
 		super();

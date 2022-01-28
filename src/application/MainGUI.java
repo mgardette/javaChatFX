@@ -31,7 +31,6 @@ public class MainGUI extends Application {
 			AuthController ctlr = loader.getController();
 			ctlr.initialize(stage);
 			stage.setScene(new Scene(root));
-			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.showAndWait();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -42,35 +42,32 @@ public class AuthController {
 		this.currentWindow = currentwindow;
 	}
     
-    public void se_connecter() throws SQLException {
+    public void se_connecter() throws SQLException, IOException {
     	Statement stm = DB.getConnection().createStatement();
 		ResultSet rs = stm.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo = '" + pseudo_input.getText() + "' AND mdp = '" + pass_input.getText() +"'");
     	if(rs.next()) {
-    		currentWindow.close();
-    		Group root = new Group();
-			ClientPanel cp = new ClientPanel();
-			root.getChildren().add(cp);
-			Scene scene = new Scene(root,500,525);
-			scene.setFill(Color.web("#2f3640"));
-			
-			try {
+    		try {
 				Client client;
 				client = new Client("127.0.0.1", 5000);
-				client.setView(cp);
-				cp.setClient(client);
-				
-				Stage stage = new Stage();
-				stage.setTitle("Chat");
-				stage.setScene(scene);
-				stage.show();
-			} catch (UnknownHostException e) {
+	    		currentWindow.close();
+	    		Stage stage = new Stage();
+	    		FXMLLoader loader = new FXMLLoader();
+	    		loader.setLocation(this.getClass().getResource("/gui/PublicChat.fxml"));
+	    		
+	    		Parent root = loader.load();
+	    		PublicChatController ctlr = loader.getController();
+	    		ctlr.initialize(stage, client);
+	    		stage.setScene(new Scene(root));
+	    		stage.show();
+    		} catch (UnknownHostException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
     	}
     	else {
-    		input_error.setVisible(true);;
+    		input_error.setVisible(true);
+    		pass_input.clear();
     	}
     	rs.close();
     	stm.close();

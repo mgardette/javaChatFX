@@ -1,12 +1,14 @@
 package gui;
 
+import client.Client;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
-public class Profile {
+public class ProfileController {
 
     @FXML
     private Button btnPlay;
@@ -46,6 +48,33 @@ public class Profile {
 
     @FXML
     private Button validateBtn;
+    
+    private Client client;
+    
+    private Client visiteur;
+    
+    private boolean profilePerso;
+    
+    public void initialize(Client client) {
+    	this.profilePerso = false;
+    	this.client = client;
+    	usersProfile.setText(this.client.getPseudo());
+    	
+    	// Vérification de si le visiteur est l'utilisateur
+    	if(this.visiteur.getPseudo().equals(this.client.getPseudo()))
+		{
+    		this.profilePerso = true;
+    		this.modifBtn.setDisable(false);
+    		this.modifBtn.setVisible(true);
+		}
+    	
+    	// Procédure pour récupérer les derniers attributs
+    	
+	}
+    
+    public void setClient(Client client) {
+		this.client = client;
+	}
 
     @FXML
     void openPrivateChat(ActionEvent event) {

@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Pixel Operator';
+	src: url('pixel_operator/PixelOperator8.ttf');
+}
+
+.text {
+	-fx-font-family: "Pixel Operator";
+}

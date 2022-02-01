@@ -46,25 +46,16 @@ public class AuthController {
     	Statement stm = DB.getConnection().createStatement();
 		ResultSet rs = stm.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo = '" + pseudo_input.getText() + "' AND mdp = '" + pass_input.getText() +"'");
     	if(rs.next()) {
-    		try {
-				Client client;
-				client = new Client("127.0.0.1", 5000, pseudo_input.getText());
-	    		currentWindow.close();
-	    		Stage stage = new Stage();
-	    		FXMLLoader loader = new FXMLLoader();
-	    		loader.setLocation(this.getClass().getResource("/gui/PublicChat.fxml"));
-	    		
-	    		Parent root = loader.load();
-	    		PublicChatController ctlr = loader.getController();
-	    		ctlr.initialize(stage, client);
-	    		client.setView(ctlr);
-	    		stage.setScene(new Scene(root));
-	    		stage.show();
-    		} catch (UnknownHostException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+    		currentWindow.close();
+    		Stage stage = new Stage();
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(this.getClass().getResource("/gui/MainMenu.fxml"));
+    		
+    		Parent root = loader.load();
+    		MainMenuController ctlr = loader.getController();
+    		ctlr.initialize(stage, pseudo_input.getText());
+    		stage.setScene(new Scene(root));
+    		stage.show();
     	}
     	else {
     		input_error.setVisible(true);

@@ -57,6 +57,7 @@ public class AuthController {
 	    		Parent root = loader.load();
 	    		PublicChatController ctlr = loader.getController();
 	    		ctlr.initialize(stage, client);
+	    		client.setView(ctlr);
 	    		stage.setScene(new Scene(root));
 	    		stage.show();
     		} catch (UnknownHostException e) {

@@ -30,13 +30,11 @@ public class Server {
 	
 	public void addClient(ConnectedClient newClient) {
 		this.clients.add(newClient);
-		Message mess = new Message(String.valueOf(newClient.getId()), " vient de se connecter");
-		broadcastMessage(mess, newClient.getId());
 	}
 	
-	public void broadcastMessage(Message mess, int id) {
+	public void broadcastMessage(Message mess) {
 		for(ConnectedClient client: clients) {
-			if(client.getId() != id) {
+			if(!client.getPseudo().equals(mess.getSender())) {
 				client.sendMessage(mess);
 			}
 		}
@@ -45,8 +43,8 @@ public class Server {
 	public void disconnectedClient(ConnectedClient disClient) {
 		disClient.closeClient();
 		clients.remove(disClient);
-		Message mess = new Message(String.valueOf(disClient.getId()), " vient de se déconnecter");
-		broadcastMessage(mess, disClient.getId());
+		Message mess = new Message(disClient.getPseudo(), " vient de se déconnecter");
+		broadcastMessage(mess);
 	}
 	
 }

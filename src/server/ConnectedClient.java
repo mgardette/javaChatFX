@@ -11,26 +11,23 @@ import common.Message;
 public class ConnectedClient implements Runnable {
 
 	private static int idCounter = 0;
-	private int id;
 	private Server server;
 	private Socket socket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
-	private String pseudo;		
+	private String pseudo;
 	
 	public ConnectedClient(Server server, Socket socket) {
 		super();
 		this.server = server;
 		this.socket = socket;
 		idCounter++;
-		id = idCounter;
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Nouvelle connexion, id = " + id);
 	}
 
 	@Override
@@ -44,26 +41,21 @@ public class ConnectedClient implements Runnable {
 		boolean isActive = true;
 		while (isActive) {
 			try {
-				Message mess = (Message) in.readObject();
-				if(mess == null) {
-					server.disconnectedClient(this);
-					isActive = false;
+				Object received = in.readObject();
+				if(received.getClass() == Message.class) {
+					server.broadcastMessage((Message) received);
 				}
-				else {
-					mess.setSender(String.valueOf(id));
-					server.broadcastMessage(mess, id);
+				else if(received.getClass() == String.class) {
+					setPseudo((String) received);
+					server.broadcastMessage(new Message(this.pseudo, " vient de se connecter."));
 				}
-				
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}
 		
+		}
 	}
 	
 	public void sendMessage(Message mess) {
@@ -87,8 +79,12 @@ public class ConnectedClient implements Runnable {
 		}
 	}
 
-	public int getId() {
-		return id;
+	public String getPseudo() {
+		return pseudo;
+	}
+	
+	private void setPseudo(String pseudo) {
+		this.pseudo = pseudo;
 	}
 	
 }

@@ -71,9 +71,5 @@ public class PublicChatController {
 			}
 		});
 	}
-    
-    public void setClient(Client client) {
-		this.client = client;
-	}
 
 }

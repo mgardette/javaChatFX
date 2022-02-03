@@ -1,11 +1,12 @@
 package client;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import common.Message;
+import server.ConnectedClient;
 
 public class ClientReceive implements Runnable {
 
@@ -25,10 +26,17 @@ public class ClientReceive implements Runnable {
 		try {
 			in = new ObjectInputStream(socket.getInputStream());
 			boolean isActive = true;
-			Message mess;
+			Object object;
 			while(isActive) {
-				mess = (Message) in.readObject();
-				if(mess != null) this.client.messageReceived(mess);
+				object = (Object) in.readObject();
+				if (object instanceof Message) {
+					Message mess = (Message) object;
+					if(mess != null) this.client.messageReceived(mess);
+				}
+				else if(object instanceof String) {
+					String listClients = (String) object;
+					this.client.clientsListReceived(listClients);
+				}
 				else isActive = false;
 			}
 			client.disconnectedServer();

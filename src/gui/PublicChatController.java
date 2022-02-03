@@ -1,12 +1,12 @@
 package gui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import client.Client;
 import common.Message;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import server.ConnectedClient;
 
 public class PublicChatController {
 
@@ -37,6 +38,9 @@ public class PublicChatController {
 
     @FXML
     private TextFlow textToShow;
+
+    @FXML
+    private TextFlow listToShow;
     
     public void initialize(Stage currentwindow, Client client) {
     	this.currentWindow = currentwindow;
@@ -71,5 +75,16 @@ public class PublicChatController {
 			}
 		});
 	}
+    
+    public void printClientsList(String clients) {
+    	Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Text text = new Text(clients);
+				//text.prefWidth(receivedText.getPrefWidth() - 20);
+				listToShow.getChildren().add(text);
+				}
+		});
+    }
 
 }

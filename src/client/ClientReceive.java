@@ -4,6 +4,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 import common.Message;
 
@@ -27,16 +28,19 @@ public class ClientReceive implements Runnable {
 			boolean isActive = true;
 			Message mess;
 			while(isActive) {
-				mess = (Message) in.readObject();
-				if(mess != null) this.client.messageReceived(mess);
-				else isActive = false;
+				try {
+					mess = (Message) in.readObject();
+					this.client.messageReceived(mess);
+				} catch(SocketException e) {
+					isActive = false;
+				} catch(EOFException e) {
+					isActive = false;
+				}
 			}
-			client.disconnectedServer();
+			client.disconnect();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

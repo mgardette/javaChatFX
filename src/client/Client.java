@@ -35,13 +35,10 @@ public class Client {
 		threadReceive.start();	
 	}
 	
-	public void disconnectedServer() throws IOException {
-		
-		System.out.println("Le serveur s'est déconnecté.");
+	public void disconnect() throws IOException {
 		if(in != null) in.close();
 		out.close();
 		socket.close();
-		System.exit(0);
 	}
 	
 	public void messageReceived(Message mess) {

@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.IOException;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
@@ -41,6 +42,9 @@ public class MainMenuController {
     @FXML
     private Button startButton;
     
+    @FXML
+    private Label errorLabel;
+    
     public void initialize(Stage currentwindow, String pseudo) {
 		this.currentWindow = currentwindow;
 		this.pseudo = pseudo;
@@ -68,14 +72,18 @@ public class MainMenuController {
     void startButtonClicked() throws UnknownHostException {
     	if(PORT.matcher(portInput.getText()).matches() && addressInput.isDisabled()) {
     		Server server = new Server(Integer.parseInt(portInput.getText()));
-    		bootClient(InetAddress.getLocalHost().getHostAddress(), Integer.parseInt(portInput.getText()));
+    		bootClient(InetAddress.getLocalHost().getHostAddress(), Integer.parseInt(portInput.getText()), server);
     	}
     	else if(ADDRESS.matcher(addressInput.getText()).matches()) {
-    		bootClient(addressInput.getText(), Integer.parseInt(portInput.getText()));
+    		bootClient(addressInput.getText(), Integer.parseInt(portInput.getText()), null);
+    	}
+    	else {
+    		errorLabel.setText("Invalid port and/or address");
+    		errorLabel.setVisible(true);
     	}
     }
     
-    public void bootClient(String address, int port) {
+    public void bootClient(String address, int port, Server server) {
     	try {
 			Client client = new Client(address, port, pseudo);
     		currentWindow.close();
@@ -85,12 +93,16 @@ public class MainMenuController {
     		
     		Parent root = loader.load();
     		PublicChatController ctlr = loader.getController();
-    		ctlr.initialize(stage, client);
+    		ctlr.initialize(stage, client, server);
     		client.setView(ctlr);
     		stage.setScene(new Scene(root));
     		stage.show();
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			errorLabel.setText("Unknown host.");
+			errorLabel.setVisible(true);
+		} catch (ConnectException e) {
+			errorLabel.setText("Unable to connect.");
+			errorLabel.setVisible(true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

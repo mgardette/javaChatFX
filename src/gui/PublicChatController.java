@@ -14,11 +14,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import server.Server;
 
 public class PublicChatController {
 
 	private Stage currentWindow;
 	private Client client;
+	private Server server;
+	private boolean isServer = false;
 
     @FXML
     private Button clearTextButton;
@@ -38,9 +41,14 @@ public class PublicChatController {
     @FXML
     private TextFlow textToShow;
     
-    public void initialize(Stage currentwindow, Client client) {
+    public void initialize(Stage currentwindow, Client client, Server server) {
     	this.currentWindow = currentwindow;
     	this.client = client;
+    	currentwindow.setOnCloseRequest( event -> {close();} );
+    	if(server != null) {
+        	this.server = server;
+        	this.isServer = true;
+    	}
     }
     
     public void sendText() {
@@ -71,5 +79,19 @@ public class PublicChatController {
 			}
 		});
 	}
+    
+    public void close() {
+    	if(isServer) {
+    		server.broadcastMessage(new Message("Server", "Shut Down."));
+    		server.closeServer();
+    	}
+    	else {
+    		try {
+				client.disconnect();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    }
 
 }

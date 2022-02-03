@@ -3,6 +3,7 @@ package server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class Connection implements Runnable {
 	
@@ -22,7 +23,7 @@ public class Connection implements Runnable {
 
 	@Override
 	public void run() {
-		while(true) {
+		while(!serverSocket.isClosed()) {
 			Socket sockNewClient;
 			try {
 				sockNewClient = serverSocket.accept();
@@ -30,14 +31,17 @@ public class Connection implements Runnable {
 				server.addClient(client);
 				Thread threadClient = new Thread(client);
 				threadClient.start();
+			} catch (SocketException e) {
+				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
 	}
-	
-	
+
+	public void closeServer() throws IOException {
+		this.serverSocket.close();
+	}
 
 }

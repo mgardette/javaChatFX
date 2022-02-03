@@ -79,7 +79,10 @@
                </BorderPane.margin></VBox>
          </center>
          <right>
-            <ScrollPane fx:id="sideBar" minWidth="-Infinity" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ScrollPane fx:id="sideBar" minWidth="-Infinity" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <TextFlow fx:id="listToShow" prefHeight="493.0" prefWidth="200.0" />
+               </content></ScrollPane>
          </right>
       </BorderPane>
    </children>

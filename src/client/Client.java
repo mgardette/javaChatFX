@@ -5,9 +5,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import common.Message;
 import gui.PublicChatController;
+import server.ConnectedClient;
 
 public class Client {
 	
@@ -36,7 +38,6 @@ public class Client {
 	}
 	
 	public void disconnectedServer() throws IOException {
-		
 		System.out.println("Le serveur s'est déconnecté.");
 		if(in != null) in.close();
 		out.close();
@@ -46,6 +47,10 @@ public class Client {
 	
 	public void messageReceived(Message mess) {
 		view.printNewMessage(mess);
+	}
+	
+	public void clientsListReceived(String listClients) {
+		view.printClientsList(listClients);
 	}
 
 	public void setView(PublicChatController view) {

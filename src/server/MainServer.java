@@ -1,5 +1,6 @@
 package server;
 import java.io.IOException;
+import java.net.BindException;
 
 import server.Server;
 /**
@@ -11,8 +12,9 @@ public class MainServer {
 /**
 * creates a new server
 * @param args
+ * @throws IOException 
 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		if (args.length != 1) {
 			printUsage();
 		} else {

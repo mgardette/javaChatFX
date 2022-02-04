@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.util.ArrayList;
 
 import client.Client;
@@ -13,7 +14,7 @@ public class Server {
 	private Connection connection;
 	private Thread threadConnection;
 	
-	public Server(int port) {
+	public Server(int port) throws BindException, IOException {
 		this.port = port;
 		this.clients = new ArrayList<ConnectedClient>();
 		connection = new Connection(this);

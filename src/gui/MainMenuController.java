@@ -1,6 +1,7 @@
 package gui;
 
 import java.io.IOException;
+import java.net.BindException;
 import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -71,8 +72,15 @@ public class MainMenuController {
     @FXML
     void startButtonClicked() throws UnknownHostException {
     	if(PORT.matcher(portInput.getText()).matches() && addressInput.isDisabled()) {
-    		Server server = new Server(Integer.parseInt(portInput.getText()));
-    		bootClient(InetAddress.getLocalHost().getHostAddress(), Integer.parseInt(portInput.getText()), server);
+    		try{
+    			Server server = new Server(Integer.parseInt(portInput.getText()));
+        		bootClient(InetAddress.getLocalHost().getHostAddress(), Integer.parseInt(portInput.getText()), server);
+    		} catch (BindException e) {
+    			errorLabel.setText("Port already in use.");
+        		errorLabel.setVisible(true);
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
     	}
     	else if(ADDRESS.matcher(addressInput.getText()).matches()) {
     		bootClient(addressInput.getText(), Integer.parseInt(portInput.getText()), null);

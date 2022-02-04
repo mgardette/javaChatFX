@@ -88,4 +88,7 @@ public class ConnectedClient implements Runnable {
 		this.pseudo = pseudo;
 	}
 	
+	public int getCount() {
+		return idCounter;
+	}
 }

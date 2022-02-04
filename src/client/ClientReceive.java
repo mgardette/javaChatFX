@@ -38,6 +38,7 @@ public class ClientReceive implements Runnable {
 				}
 			}
 			client.disconnect();
+			client.getView().disableSend();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

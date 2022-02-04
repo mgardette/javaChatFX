@@ -44,6 +44,10 @@ public class Client {
 	public void messageReceived(Message mess) {
 		view.printNewMessage(mess);
 	}
+	
+	public PublicChatController getView() {
+		return view;
+	}
 
 	public void setView(PublicChatController view) {
 		this.view = view;

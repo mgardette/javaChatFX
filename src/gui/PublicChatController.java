@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import java.util.ArrayList;
 import client.Client;
 import common.Message;
 import javafx.application.Platform;
@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import server.Server;
+import server.ConnectedClient;
 
 public class PublicChatController {
 
@@ -52,6 +53,9 @@ public class PublicChatController {
 
     @FXML
     private TextFlow textToShow;
+
+    @FXML
+    private TextFlow listToShow;
     
     @FXML
     private MenuItem saveConvoMenu;
@@ -112,6 +116,17 @@ public class PublicChatController {
     
     public void disableSend() {
     	sendTextButton.setDisable(true);
+    }
+    
+    public void printClientsList(String clients) {
+    	Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				Text text = new Text(clients);
+				//text.prefWidth(receivedText.getPrefWidth() - 20);
+				listToShow.getChildren().add(text);
+				}
+		});
     }
 
     public void saveConversation() {

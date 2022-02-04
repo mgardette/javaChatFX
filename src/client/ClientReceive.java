@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 import common.Message;
+import server.ConnectedClient;
 
 public class ClientReceive implements Runnable {
 

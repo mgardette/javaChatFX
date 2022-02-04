@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 import common.Message;
 
@@ -48,6 +49,7 @@ public class ConnectedClient implements Runnable {
 				else if(received.getClass() == String.class) {
 					setPseudo((String) received);
 					server.broadcastMessage(new Message(this.pseudo, " vient de se connecter."));
+					server.broadcastList();
 				}
 			} catch (SocketException e) {
 
@@ -61,9 +63,9 @@ public class ConnectedClient implements Runnable {
 		}
 	}
 	
-	public void sendMessage(Message mess) {
+	public void sendMessage(Object object) {
 		try {
-			this.out.writeObject(mess);
+			this.out.writeObject(object);
 			this.out.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

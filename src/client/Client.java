@@ -5,9 +5,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import common.Message;
 import gui.PublicChatController;
+import server.ConnectedClient;
 
 public class Client {
 	
@@ -47,6 +49,10 @@ public class Client {
 	
 	public PublicChatController getView() {
 		return view;
+	
+}
+	public void clientsListReceived(String listClients) {
+		view.printClientsList(listClients);
 	}
 
 	public void setView(PublicChatController view) {

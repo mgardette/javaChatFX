@@ -69,7 +69,10 @@ public class PublicChatController {
         	this.server = server;
         	this.isServer = true;
     	}
-    	String clients = this.client.getListClients();
+    	String clients;
+    	do {
+    		clients = this.client.getListClients();
+    	} while(clients == null);
         String[] listClients = clients.split(";");
       for(String clientToShow : listClients) {
         if(clientToShow != "") {

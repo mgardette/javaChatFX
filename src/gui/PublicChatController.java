@@ -69,6 +69,15 @@ public class PublicChatController {
         	this.server = server;
         	this.isServer = true;
     	}
+    	String clients = this.client.getListClients();
+        String[] listClients = clients.split(";");
+      for(String clientToShow : listClients) {
+        if(clientToShow != "") {
+          clientToShow = clientToShow + "\n";
+            Text text = new Text(clientToShow);
+          listToShow.getChildren().add(text);
+        }
+      }
     }
     
     public void sendText() {
@@ -100,6 +109,7 @@ public class PublicChatController {
 		});
 	}
     
+
     public void close() {
     	if(isServer) {
     		server.broadcastMessage(new Message("Server", "Shut Down."));
@@ -118,13 +128,21 @@ public class PublicChatController {
     	sendTextButton.setDisable(true);
     }
     
-    public void printClientsList(String clients) {
+    public void printClientsList(String clients) {  
+    	String clients = this.client.getListClients();
+        String[] listClients = clients.split(";");
     	Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				Text text = new Text(clients);
+				listToShow.getChildren().clear();
+				for(String client : listClients) {
+					if(client != "") {
+						client = client + "\n";
+				    	Text text = new Text(client);
+						listToShow.getChildren().add(text);
+					}
+				}
 				//text.prefWidth(receivedText.getPrefWidth() - 20);
-				listToShow.getChildren().add(text);
 				}
 		});
     }
@@ -133,7 +151,7 @@ public class PublicChatController {
     	StringBuilder sb = new StringBuilder();
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm, dd/MM/yyyy");
     	
-    	sb.append(client.getPseudo() + " s'est connecté à " + dtf.format(whenConnected) + "\n");
+    	sb.append(client.getPseudo() + " s'est connectÃ© Ã  " + dtf.format(whenConnected) + "\n");
     	for (Node node : textToShow.getChildren()) {
     	    if (node instanceof Text) {
     	        sb.append(((Text) node).getText());

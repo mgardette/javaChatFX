@@ -38,15 +38,16 @@ public class Server {
 		this.clients.add(newClient);
 	}
 	
-	public void broadcastList() {
+	public void broadcastList(String pseudo) {
 		String listToString = "";
 		// Passage de la liste en string car sinon impossible d'envoyer
 		for(ConnectedClient client: this.clients) {
-			listToString = client.getPseudo() + "\n";
+			listToString = listToString + ";" + client.getPseudo();
 		}
-		for(ConnectedClient client: this.clients) {
+		for(ConnectedClient client: clients) {
 			client.sendMessage(listToString);
 		}
+		System.out.println("list to string " + listToString + " array " + this.clients);
 	}
 	
 	public void broadcastMessage(Message mess) {
@@ -62,7 +63,7 @@ public class Server {
 		clients.remove(disClient);
 		Message mess = new Message(disClient.getPseudo(), " est déconnecté.");
 		broadcastMessage(mess);
-		broadcastList();
+		broadcastList(null);
 	}
 	
 	public void closeServer() {

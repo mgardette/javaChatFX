@@ -47,7 +47,6 @@ public class Server {
 		for(ConnectedClient client: clients) {
 			client.sendMessage(listToString);
 		}
-		System.out.println("list to string " + listToString + " array " + this.clients);
 	}
 	
 	public void broadcastMessage(Message mess) {

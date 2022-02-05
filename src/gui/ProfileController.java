@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import server.Server;
 
 public class ProfileController {
 
@@ -55,18 +57,21 @@ public class ProfileController {
     
     private boolean profilePerso;
     
-    public void initialize(Client client) {
+    public void initialize(Stage currentwindow, String client, Client visiteur, Server server) {
     	this.profilePerso = false;
-    	this.client = client;
-    	usersProfile.setText(this.client.getPseudo());
+    	// TODO requete bdd pour récupérer le client associé au pseudo
+    	//this.client = client;
+    	this.visiteur = visiteur;
+    	//usersProfile.setText(this.client.getPseudo());
+    	usersProfile.setText(client);
     	
     	// Vérification de si le visiteur est l'utilisateur
-    	if(this.visiteur.getPseudo().equals(this.client.getPseudo()))
+    	/*if(this.visiteur.getPseudo().equals(this.client.getPseudo()))
 		{
     		this.profilePerso = true;
     		this.modifBtn.setDisable(false);
     		this.modifBtn.setVisible(true);
-		}
+		}*/
     	
     	// Procédure pour récupérer les derniers attributs
     	

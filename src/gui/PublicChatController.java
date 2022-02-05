@@ -128,7 +128,7 @@ public class PublicChatController {
     	sendTextButton.setDisable(true);
     }
     
-    public void printClientsList(String clients) {  
+    public void printClientsList() {  
     	String clients = this.client.getListClients();
         String[] listClients = clients.split(";");
     	Platform.runLater(new Runnable() {

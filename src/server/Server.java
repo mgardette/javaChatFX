@@ -38,6 +38,10 @@ public class Server {
 		this.clients.add(newClient);
 	}
 	
+	public String getAddress() {
+		return connection.getAddress();
+	}
+	
 	public void broadcastList() {
 		String listToString = "";
 		// Passage de la liste en string car sinon impossible d'envoyer

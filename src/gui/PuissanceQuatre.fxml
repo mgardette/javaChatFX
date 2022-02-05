@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="698.0" prefWidth="762.0" style="-fx-background-color: #1e1b2e;" stylesheets="@../../ressources/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="playerOneTitle" text="&lt;user1&gt;" textFill="#ff3260">
+               <font>
+                  <Font name="Pixel Operator 8 Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="vs" textFill="WHITE">
+               <font>
+                  <Font name="Pixel Operator 8" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="playerTwoTitle" text="&lt;user2&gt;" textFill="#5fd2ea">
+               <font>
+                  <Font name="Pixel Operator 8 Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="8.0" top="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="status" stylesheets="@../../ressources/style.css" text="Au tour de" textFill="WHITE">
+               <font>
+                  <Font name="Pixel Operator 8" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="playerStatus" text="&lt;user&gt;">
+               <font>
+                  <Font name="Pixel Operator 8 Bold" size="18.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="15.0" top="8.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-border-width: 4;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="column0" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column1" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column2" alignment="BOTTOM_CENTER" layoutX="110.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column3" alignment="BOTTOM_CENTER" layoutX="210.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column4" alignment="BOTTOM_CENTER" layoutX="310.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column5" alignment="BOTTOM_CENTER" layoutX="410.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="600.0" fitWidth="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../ressources/colunm_animation.gif" />
+               </image>
+            </ImageView>
+            <VBox fx:id="column6" alignment="BOTTOM_CENTER" layoutX="510.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="15.0" right="15.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>

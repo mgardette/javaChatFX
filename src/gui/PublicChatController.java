@@ -68,6 +68,10 @@ public class PublicChatController {
     	if(server != null) {
         	this.server = server;
         	this.isServer = true;
+        	alert.setAlertType(AlertType.INFORMATION);
+			alert.setHeaderText("Server successfully created !");
+			alert.setContentText("Port : " + server.getPort() + "\nAddress : " + server.getAddress());
+			alert.showAndWait();
     	}
     }
     

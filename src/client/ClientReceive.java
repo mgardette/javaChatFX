@@ -1,8 +1,10 @@
 package client;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 import common.Message;
@@ -28,23 +30,21 @@ public class ClientReceive implements Runnable {
 			boolean isActive = true;
 			Object object;
 			while(isActive) {
-				object = (Object) in.readObject();
-				if (object instanceof Message) {
-					Message mess = (Message) object;
-					if(mess != null) this.client.messageReceived(mess);
+				try {
+					object = in.readObject();
+					if(object instanceof Message) this.client.messageReceived((Message) object);
+					else if(object instanceof String) this.client.clientsListReceived((String) object);
+				} catch(SocketException e) {
+					isActive = false;
+				} catch(EOFException e) {
+					isActive = false;
 				}
-				else if(object instanceof String) {
-					String listClients = (String) object;
-					this.client.clientsListReceived(listClients);
-				}
-				else isActive = false;
 			}
-			client.disconnectedServer();
+			client.disconnect();
+			client.getView().disableSend();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

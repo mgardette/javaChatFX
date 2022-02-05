@@ -22,11 +22,12 @@ public class Client {
 	private PublicChatController view;
 	private String listClients;
 	
-	public Client(String address, int port, String pseudo) throws UnknownHostException, IOException {
+	public Client(String address, int port, String pseudo, PublicChatController view) throws UnknownHostException, IOException {
 		super();
 		this.address = address;
 		this.port = port;
 		this.pseudo = pseudo;
+		this.view = view;
 		
 		this.socket = new Socket(address, port);
 		out = new ObjectOutputStream(socket.getOutputStream());
@@ -38,12 +39,10 @@ public class Client {
 		threadReceive.start();	
 	}
 	
-	public void disconnectedServer() throws IOException {
-		System.out.println("Le serveur s'est déconnecté.");
+	public void disconnect() throws IOException {
 		if(in != null) in.close();
 		out.close();
 		socket.close();
-		System.exit(0);
 	}
 	
 	public String getListClients() {
@@ -54,15 +53,15 @@ public class Client {
 		view.printNewMessage(mess);
 	}
 	
+	public PublicChatController getView() {
+		return view;
+	
+}
 	public void clientsListReceived(String listClients) {
 		this.listClients = listClients;
 		if(this.view != null) {
 			view.printClientsList();
 		}
-	}
-
-	public void setView(PublicChatController view) {
-		this.view = view;
 	}
 
 	public Socket getSocket() {

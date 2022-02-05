@@ -1,18 +1,24 @@
 package server;
 
+import java.io.IOException;
+import java.net.BindException;
 import java.util.ArrayList;
 
+import client.Client;
 import common.Message;
 
 public class Server {
 
 	private int port;
 	private ArrayList<ConnectedClient> clients;
+	private Connection connection;
+	private Thread threadConnection;
 	
-	public Server(int port) {
+	public Server(int port) throws BindException, IOException {
 		this.port = port;
 		this.clients = new ArrayList<ConnectedClient>();
-		Thread threadConnection = new Thread(new Connection(this));
+		connection = new Connection(this);
+		threadConnection = new Thread(connection);
 		threadConnection.start();
 	}
 	
@@ -27,7 +33,7 @@ public class Server {
 	public void setPort(int port) {
 		this.port = port;
 	}
-	
+
 	public void addClient(ConnectedClient newClient) {
 		this.clients.add(newClient);
 	}
@@ -55,9 +61,29 @@ public class Server {
 	public void disconnectedClient(ConnectedClient disClient) {
 		disClient.closeClient();
 		clients.remove(disClient);
-		Message mess = new Message(disClient.getPseudo(), " vient de se déconnecter");
+		Message mess = new Message(disClient.getPseudo(), " est déconnecté.");
 		broadcastMessage(mess);
 		broadcastList(null);
+	}
+	
+	public void closeServer() {
+		for(ConnectedClient client : clients) {
+			client.closeClient();
+		}
+		try {
+			connection.closeServer();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void closeClient(Client client) {
+		for(ConnectedClient coClient : clients) {
+			if(coClient.getPseudo().equals(client.getPseudo())){
+				disconnectedClient(coClient);
+				break;
+			}
+		}
 	}
 	
 }

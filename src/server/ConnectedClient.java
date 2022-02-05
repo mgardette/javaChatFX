@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 
 import common.Message;
@@ -39,8 +40,7 @@ public class ConnectedClient implements Runnable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		boolean isActive = true;
-		while (isActive) {
+		while (!socket.isClosed()) {
 			try {
 				Object received = in.readObject();
 				if(received.getClass() == Message.class) {
@@ -51,12 +51,15 @@ public class ConnectedClient implements Runnable {
 					server.broadcastMessage(new Message(this.pseudo, " vient de se connecter."));
 					server.broadcastList(this.pseudo);
 				}
+			} catch (SocketException e) {
+
+			} catch (EOFException e) {
+				server.disconnectedClient(this);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		
 		}
 	}
 	
@@ -65,7 +68,6 @@ public class ConnectedClient implements Runnable {
 			this.out.writeObject(object);
 			this.out.flush();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -76,7 +78,6 @@ public class ConnectedClient implements Runnable {
 			this.out.close();
 			this.socket.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -89,4 +90,7 @@ public class ConnectedClient implements Runnable {
 		this.pseudo = pseudo;
 	}
 	
+	public int getCount() {
+		return idCounter;
+	}
 }

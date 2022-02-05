@@ -49,7 +49,7 @@ public class AuthController {
     		currentWindow.close();
     		Stage stage = new Stage();
     		FXMLLoader loader = new FXMLLoader();
-    		loader.setLocation(this.getClass().getResource("/gui/MainMenu.fxml"));
+    		loader.setLocation(this.getClass().getResource("MainMenu.fxml"));
     		
     		Parent root = loader.load();
     		MainMenuController ctlr = loader.getController();

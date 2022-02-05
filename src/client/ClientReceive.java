@@ -28,11 +28,12 @@ public class ClientReceive implements Runnable {
 		try {
 			in = new ObjectInputStream(socket.getInputStream());
 			boolean isActive = true;
-			Message mess;
+			Object object;
 			while(isActive) {
 				try {
-					mess = (Message) in.readObject();
-					this.client.messageReceived(mess);
+					object = in.readObject();
+					if(object instanceof Message) this.client.messageReceived((Message) object);
+					else if(object instanceof String) this.client.clientsListReceived((String) object);
 				} catch(SocketException e) {
 					isActive = false;
 				} catch(EOFException e) {

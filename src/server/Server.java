@@ -32,14 +32,16 @@ public class Server {
 		this.clients.add(newClient);
 	}
 	
-	public void broadcastList() {
+	public void broadcastList(String pseudo) {
 		String listToString = "";
 		// Passage de la liste en string car sinon impossible d'envoyer
 		for(ConnectedClient client: this.clients) {
 			listToString = client.getPseudo() + "\n";
 		}
-		for(ConnectedClient client: this.clients) {
-			client.sendMessage(listToString);
+		for(ConnectedClient client: clients) {
+			if(!client.getPseudo().equals(pseudo)) {
+				client.sendMessage(listToString);
+			}
 		}
 	}
 	
@@ -56,7 +58,7 @@ public class Server {
 		clients.remove(disClient);
 		Message mess = new Message(disClient.getPseudo(), " vient de se déconnecter");
 		broadcastMessage(mess);
-		broadcastList();
+		broadcastList(null);
 	}
 	
 }

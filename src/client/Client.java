@@ -20,6 +20,7 @@ public class Client {
 	private ObjectOutputStream out;
 	private String pseudo;
 	private PublicChatController view;
+	private String listClients;
 	
 	public Client(String address, int port, String pseudo) throws UnknownHostException, IOException {
 		super();
@@ -50,7 +51,7 @@ public class Client {
 	}
 	
 	public void clientsListReceived(String listClients) {
-		view.printClientsList(listClients);
+		this.listClients = listClients;
 	}
 
 	public void setView(PublicChatController view) {

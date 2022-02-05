@@ -93,7 +93,6 @@ public class MainMenuController {
     
     public void bootClient(String address, int port, Server server) {
     	try {
-			Client client = new Client(address, port, pseudo);
     		currentWindow.close();
     		Stage stage = new Stage();
     		FXMLLoader loader = new FXMLLoader();
@@ -101,8 +100,8 @@ public class MainMenuController {
     		
     		Parent root = loader.load();
     		PublicChatController ctlr = loader.getController();
+    		Client client = new Client(address, port, pseudo, ctlr);
     		ctlr.initialize(stage, client, server);
-    		client.setView(ctlr);
     		stage.setScene(new Scene(root));
     		stage.show();
 		} catch (UnknownHostException e) {

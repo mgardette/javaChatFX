@@ -21,11 +21,12 @@ public class Client {
 	private String pseudo;
 	private PublicChatController view;
 	
-	public Client(String address, int port, String pseudo) throws UnknownHostException, IOException {
+	public Client(String address, int port, String pseudo, PublicChatController view) throws UnknownHostException, IOException {
 		super();
 		this.address = address;
 		this.port = port;
 		this.pseudo = pseudo;
+		this.view = view;
 		
 		this.socket = new Socket(address, port);
 		out = new ObjectOutputStream(socket.getOutputStream());
@@ -53,10 +54,6 @@ public class Client {
 }
 	public void clientsListReceived(String listClients) {
 		view.printClientsList(listClients);
-	}
-
-	public void setView(PublicChatController view) {
-		this.view = view;
 	}
 
 	public Socket getSocket() {

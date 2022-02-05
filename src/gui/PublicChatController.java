@@ -1,7 +1,6 @@
 package gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import client.Client;
 import common.Message;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import server.ConnectedClient;
 
 public class PublicChatController {
 
@@ -45,6 +43,15 @@ public class PublicChatController {
     public void initialize(Stage currentwindow, Client client) {
     	this.currentWindow = currentwindow;
     	this.client = client;
+    	String clients = this.client.getListClients();
+        String[] listClients = clients.split(";");
+		for(String clientToShow : listClients) {
+			if(clientToShow != "") {
+				clientToShow = clientToShow + "\n";
+		    	Text text = new Text(clientToShow);
+				listToShow.getChildren().add(text);
+			}
+		}
     }
     
     public void sendText() {
@@ -76,13 +83,21 @@ public class PublicChatController {
 		});
 	}
     
-    public void printClientsList(String clients) {
+    public void printClientsList() {
+    	String clients = this.client.getListClients();
+        String[] listClients = clients.split(";");
     	Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				Text text = new Text(clients);
+				listToShow.getChildren().clear();
+				for(String client : listClients) {
+					if(client != "") {
+						client = client + "\n";
+				    	Text text = new Text(client);
+						listToShow.getChildren().add(text);
+					}
+				}
 				//text.prefWidth(receivedText.getPrefWidth() - 20);
-				listToShow.getChildren().add(text);
 				}
 		});
     }

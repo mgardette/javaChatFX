@@ -36,13 +36,12 @@ public class Server {
 		String listToString = "";
 		// Passage de la liste en string car sinon impossible d'envoyer
 		for(ConnectedClient client: this.clients) {
-			listToString = client.getPseudo() + "\n";
+			listToString = listToString + ";" + client.getPseudo();
 		}
 		for(ConnectedClient client: clients) {
-			if(!client.getPseudo().equals(pseudo)) {
-				client.sendMessage(listToString);
-			}
+			client.sendMessage(listToString);
 		}
+		System.out.println("list to string " + listToString + " array " + this.clients);
 	}
 	
 	public void broadcastMessage(Message mess) {

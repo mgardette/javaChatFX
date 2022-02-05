@@ -46,12 +46,19 @@ public class Client {
 		System.exit(0);
 	}
 	
+	public String getListClients() {
+		return this.listClients;
+	}
+	
 	public void messageReceived(Message mess) {
 		view.printNewMessage(mess);
 	}
 	
 	public void clientsListReceived(String listClients) {
 		this.listClients = listClients;
+		if(this.view != null) {
+			view.printClientsList();
+		}
 	}
 
 	public void setView(PublicChatController view) {

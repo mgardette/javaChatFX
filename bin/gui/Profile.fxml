@@ -38,24 +38,24 @@
             <Separator prefWidth="200.0" />
             <VBox alignment="TOP_CENTER" prefHeight="144.0" prefWidth="701.0" VBox.vgrow="NEVER">
                <children>
-                  <TextArea editable="false" VBox.vgrow="SOMETIMES">
+                  <TextArea fx:id="desc" editable="false" VBox.vgrow="SOMETIMES">
                      <VBox.margin>
                         <Insets bottom="10.0" top="15.0" />
                      </VBox.margin>
                   </TextArea>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="validateBtn" disable="true" mnemonicParsing="false" text="Valider" visible="false">
+                        <Button fx:id="validateBtn" disable="true" mnemonicParsing="false" onAction="#validModif" text="Valider" visible="false">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="modifBtn" disable="true" mnemonicParsing="false" text="Modifier" visible="false">
+                        <Button fx:id="modifBtn" disable="true" mnemonicParsing="false" onAction="#modifDesc" text="Modifier" visible="false">
                            <HBox.margin>
-                              <Insets left="10.0" />
+                              <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelBtn" disable="true" mnemonicParsing="false" text="Annuler" visible="false" />
+                        <Button fx:id="cancelBtn" disable="true" mnemonicParsing="false" onAction="#cancelModif" text="Annuler" visible="false" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />
@@ -101,7 +101,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Historique 5" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoFive" alignment="CENTER" contentDisplay="CENTER" text="Historique 5" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>

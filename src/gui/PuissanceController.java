@@ -70,7 +70,7 @@ public class PuissanceController {
 	
 	public void columnClick(MouseEvent e, int col) {
 		
-		if(jeu.placerPiece(col, joueur)) {
+		if(jeu.placerPiece(col)) {
 			ImageView imageView = new ImageView();
 			File file = new File("resources/checker_one.png");
 			if(jeu.getJoueurActif().equals(jeu.getJ2())) {
@@ -83,7 +83,6 @@ public class PuissanceController {
 		    column.getChildren().add(0, imageView);
 		    this.setupProchainTour();
 		}
-	    
 	    
 	}
 	

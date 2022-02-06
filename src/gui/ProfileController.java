@@ -189,7 +189,7 @@ public class ProfileController {
     	this.visiteur = visiteur;
     	
     	// Vérification de si le visiteur est l'utilisateur
-    	if(this.visiteur.getPseudo().equals(this.user.getPseudo()))
+    	if(this.user != null && this.visiteur.getPseudo().equals(this.user.getPseudo()))
 		{
     		this.profilePerso = true;
     		this.modifBtn.setDisable(false);

@@ -15,6 +15,7 @@ public class PuissanceController {
 	
 	private Jeu jeu;
 	private Stage currentWindow;
+	private String joueur;
 
 	@FXML
 	private VBox column0;
@@ -52,6 +53,7 @@ public class PuissanceController {
 	public void initialize(Stage currentWindow, String pseudoJ1, String pseudoJ2) {
 		this.currentWindow = currentWindow;
 		currentWindow.setResizable(false);
+		this.joueur = pseudoJ1;
 		this.jeu = new Jeu(pseudoJ1, pseudoJ2);
 		this.playerOneTitle.setText(pseudoJ1);
 		this.playerTwoTitle.setText(pseudoJ2);
@@ -67,22 +69,30 @@ public class PuissanceController {
 	}
 	
 	public void columnClick(MouseEvent e, int col) {
-	    ImageView imageView = new ImageView();
-		File file = new File("resources/checker_one.png");
-		if(jeu.getJoueurActif() == jeu.getJ1()) {
-			file = new File("resources/checker_two.png");
+		
+		if(jeu.placerPiece(col, joueur)) {
+			ImageView imageView = new ImageView();
+			File file = new File("resources/checker_one.png");
+			if(jeu.getJoueurActif().equals(jeu.getJ2())) {
+				file = new File("resources/checker_two.png");
+			}
+		    imageView.setImage(new Image(file.toURI().toString()));
+		    imageView.setFitWidth(100);
+		    imageView.setFitHeight(100);
+		    VBox column = (VBox) e.getSource();
+		    column.getChildren().add(0, imageView);
+		    this.setupProchainTour();
 		}
-	    imageView.setImage(new Image(file.toURI().toString()));
-	    imageView.setFitWidth(100);
-	    imageView.setFitHeight(100);
-	    VBox column = (VBox) e.getSource();
-	    column.getChildren().add(0, imageView);
 	    
-	    switch(jeu.unTour()) {
+	    
+	}
+	
+	private void setupProchainTour() {
+		switch(jeu.prochainTour()) {
 	    case 0:
 	    	playerStatus.setText(jeu.getJoueurActif());
 	    	playerStatus.setStyle("-fx-text-fill : #5fd2ea");
-	    	if(jeu.getJoueurActif() == jeu.getJ1()) {
+	    	if(jeu.getJoueurActif().equals(jeu.getJ1())) {
 	    		playerStatus.setStyle("-fx-text-fill : #ff3260");
 	    	}
 	    	break;

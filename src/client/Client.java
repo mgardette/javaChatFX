@@ -12,7 +12,7 @@ import gui.PublicChatController;
 import server.ConnectedClient;
 
 public class Client {
-	
+
 	private String address;
 	private int port;
 	private Socket socket;
@@ -21,6 +21,7 @@ public class Client {
 	private String pseudo;
 	private PublicChatController view;
 	private String listClients;
+	
 	
 	public Client(String address, int port, String pseudo, PublicChatController view) throws UnknownHostException, IOException {
 		super();

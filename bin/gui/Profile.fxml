@@ -63,7 +63,7 @@
                   </HBox>
                </children>
             </VBox>
-            <Separator prefWidth="701.0" />
+            <Separator prefWidth="701.0" style="-fx-background-color: style=&quot;-fx-background-color: #1f1b2f;&quot;;" />
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="CENTER" prefHeight="45.0" prefWidth="344.0" HBox.hgrow="ALWAYS">
@@ -125,12 +125,7 @@
                               <Insets left="3.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
-                        <ImageView fx:id="rankingPicture" fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </ImageView>
-                        <Label fx:id="rankingName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" text="Intitulé" VBox.vgrow="ALWAYS">
+                        <Label fx:id="rankingName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefWidth="37.0" text="Intitulé" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>

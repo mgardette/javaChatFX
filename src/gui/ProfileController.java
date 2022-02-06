@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import server.Server;
@@ -92,90 +93,128 @@ public class ProfileController {
 		      }
 			  rs = stm.executeQuery("SELECT resultat, joueur, adversaire FROM scorejeu WHERE joueur = '" +client + "' OR adversaire ='" + client + "' ");
 			  int compteur = 0;
-		      //étape 5: extraire les données
-		      while(rs.next() && compteur <= 4 ){
-		         //Récupérer par nom de colonne
-		         String result = rs.getString("resultat");
-		         String player = rs.getString("joueur");
-		         String opponent = rs.getString("adversaire");
-		         //Créer objet client
-		         
+		      while(compteur <= 4 ){		         
 		        switch (compteur) {
-				case 0: {
-					this.histoOne.setText(player + " contre " + opponent + " - ");
-			         switch (result) {
-					case "V":
-						this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
-						break;
-					case "N":
-						this.histoOne.setText(this.histoOne.getText() + " nul");
-						break;
-					case "D":
-						this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
-						break;
-					}
-					break;
-				}
-				case 1: {
-					this.histoOne.setText(player + " contre " + opponent + " - ");
-			         switch (result) {
-					case "V":
-						this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
-						break;
-					case "N":
-						this.histoOne.setText(this.histoOne.getText() + " nul");
-						break;
-					case "D":
-						this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
+					case 0: {
+						if(rs.next())
+						{
+					        String result = rs.getString("resultat");
+					        String player = rs.getString("joueur");
+					        String opponent = rs.getString("adversaire");
+							this.histoOne.setText(player + " contre " + opponent + " - ");
+					         switch (result) {
+							case "V":
+								this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
+								break;
+							case "N":
+								this.histoOne.setText(this.histoOne.getText() + " nul");
+								break;
+							case "D":
+								this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
+								break;
+							}
+						}
+						else {
+							this.histoOne.setText("");
+						}
 						break;
 					}
-					break;
-				}
-				case 2: {
-					this.histoOne.setText(player + " contre " + opponent + " - ");
-			         switch (result) {
-					case "V":
-						this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
-						break;
-					case "N":
-						this.histoOne.setText(this.histoOne.getText() + " nul");
-						break;
-					case "D":
-						this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
-						break;
-					}
-					break;
-				}
-				case 3: {
-					this.histoOne.setText(player + " contre " + opponent + " - ");
-			         switch (result) {
-					case "V":
-						this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
-						break;
-					case "N":
-						this.histoOne.setText(this.histoOne.getText() + " nul");
-						break;
-					case "D":
-						this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
+					case 1: {
+						if(rs.next())
+						{
+					        String result = rs.getString("resultat");
+					        String player = rs.getString("joueur");
+					        String opponent = rs.getString("adversaire");
+							this.histoTwo.setText(player + " contre " + opponent + " - ");
+					         switch (result) {
+							case "V":
+								this.histoTwo.setText(this.histoTwo.getText() + " victoire de " + player);
+								break;
+							case "N":
+								this.histoTwo.setText(this.histoTwo.getText() + " nul");
+								break;
+							case "D":
+								this.histoTwo.setText(this.histoTwo.getText() + " défaite de " + player);
+								break;
+							}
+						}
+						else {
+							this.histoTwo.setText("");
+						}
 						break;
 					}
-					break;
-				}
-				case 4: {
-					this.histoOne.setText(player + " contre " + opponent + " - ");
-			         switch (result) {
-					case "V":
-						this.histoOne.setText(this.histoOne.getText() + " victoire de " + player);
-						break;
-					case "N":
-						this.histoOne.setText(this.histoOne.getText() + " nul");
-						break;
-					case "D":
-						this.histoOne.setText(this.histoOne.getText() + " défaite de " + player);
+					case 2: {
+						if(rs.next())
+						{
+					        String result = rs.getString("resultat");
+					        String player = rs.getString("joueur");
+					        String opponent = rs.getString("adversaire");
+							this.histoThree.setText(player + " contre " + opponent + " - ");
+					         switch (result) {
+							case "V":
+								this.histoThree.setText(this.histoThree.getText() + " victoire de " + player);
+								break;
+							case "N":
+								this.histoThree.setText(this.histoThree.getText() + " nul");
+								break;
+							case "D":
+								this.histoThree.setText(this.histoThree.getText() + " défaite de " + player);
+								break;
+							}
+						}
+						else {
+							this.histoThree.setText("");
+						}
 						break;
 					}
-					break;
-				}
+					case 3: {
+						if(rs.next())
+						{
+					        String result = rs.getString("resultat");
+					        String player = rs.getString("joueur");
+					        String opponent = rs.getString("adversaire");
+							this.histoFour.setText(player + " contre " + opponent + " - ");
+					         switch (result) {
+							case "V":
+								this.histoFour.setText(this.histoFour.getText() + " victoire de " + player);
+								break;
+							case "N":
+								this.histoFour.setText(this.histoFour.getText() + " nul");
+								break;
+							case "D":
+								this.histoFour.setText(this.histoFour.getText() + " défaite de " + player);
+								break;
+							}
+						}
+						else {
+							this.histoFour.setText("");
+						}
+						break;
+					}
+					case 4: {
+						if(rs.next())
+						{
+					        String result = rs.getString("resultat");
+					        String player = rs.getString("joueur");
+					        String opponent = rs.getString("adversaire");
+							this.histoFive.setText(player + " contre " + opponent + " - ");
+					         switch (result) {
+							case "V":
+								this.histoFive.setText(this.histoFive.getText() + " victoire de " + player);
+								break;
+							case "N":
+								this.histoFive.setText(this.histoFive.getText() + " nul");
+								break;
+							case "D":
+								this.histoFive.setText(this.histoFive.getText() + " défaite de " + player);
+								break;
+							}
+						}
+						else {
+							this.histoFive.setText("");
+						}
+						break;
+					}
 		        }
 	     		 compteur++;
 		      }
@@ -199,13 +238,77 @@ public class ProfileController {
     		this.btnPrvChat.setDisable(true);
     		this.btnPrvChat.setVisible(false);
 		}
-    	
-    	// Procédure pour récupérer les derniers attributs
-    	
+		try {
+	    	String rank;
+			rank = calculRank();
+	    	this.rankingName.setText(rank);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
-    public void calculRank() {
-    	
+    public String calculRank() throws SQLException {
+    	Statement stm;
+    	stm = DB.getConnection().createStatement();
+    	ResultSet  rs = stm.executeQuery("SELECT resultat, joueur, adversaire FROM scorejeu WHERE joueur = '" + this.user.getPseudo() + "' OR adversaire ='" + this.user.getPseudo() + "' ");
+    	int nbPoints = 300;
+    	int compteurV = 0;
+    	int compteurN = 0;
+    	int compteurD = 0;
+    	int compteurP = 0;
+		while(rs.next()) {
+			if(rs.getString("joueur").equals(this.user.getPseudo())) {
+				switch (rs.getString("resultat")) {
+				case "V":
+						compteurV++;
+					break;
+				case "N":
+						compteurN++;
+					break;
+				case "D":
+						compteurD++;
+					break;
+				}
+				
+			}
+			else {
+				switch (rs.getString("resultat")) {
+				case "V":
+						compteurD++;
+					break;
+				case "N":
+						compteurN++;
+					break;
+				case "D":
+						compteurV++;
+					break;
+				}
+			}
+			compteurP++;
+		}
+		compteurP = compteurP * 10;
+		compteurV = compteurV * 10;
+		int compteurT = nbPoints + (compteurV - compteurP);
+		String tier = "";
+		if(compteurT < 200) {
+			tier = "Bronze";
+		}
+		else if(compteurT < 400 && compteurT > 199) {
+			tier = "Argent";
+		}
+		else if(compteurT < 600 && compteurT > 399) {
+			tier = "Or";
+		}
+		else if(compteurT < 800 && compteurT > 599) {
+			tier = "Platine";
+		}
+		else if(compteurT > 799) {
+			tier = "Diamant";
+		}
+		rs.close();
+		stm.close();
+		return tier;
     }
 
     @FXML

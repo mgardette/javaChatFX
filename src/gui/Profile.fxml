@@ -50,17 +50,17 @@
                   </TextArea>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="validateBtn" disable="true" mnemonicParsing="false" onAction="#validModif" text="Valider" visible="false">
+                        <Button fx:id="validateBtn" disable="true" mnemonicParsing="false" onAction="#validModif" style="-fx-background-color: #ffa537;" text="Valider" visible="false">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="modifBtn" disable="true" mnemonicParsing="false" onAction="#modifDesc" text="Modifier" visible="false">
+                        <Button fx:id="modifBtn" disable="true" mnemonicParsing="false" onAction="#modifDesc" style="-fx-background-color: #ffa537;" text="Modifier" visible="false">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelBtn" disable="true" mnemonicParsing="false" onAction="#cancelModif" text="Annuler" visible="false" />
+                        <Button fx:id="cancelBtn" disable="true" mnemonicParsing="false" onAction="#cancelModif" style="-fx-background-color: #ffa537;" text="Annuler" visible="false" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" />

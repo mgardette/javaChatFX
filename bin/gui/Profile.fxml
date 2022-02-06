@@ -5,40 +5,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="525.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileController">
+<AnchorPane prefHeight="525.0" prefWidth="731.0" style="-fx-background-color: #1f1b2f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProfileController">
    <children>
       <VBox layoutX="2.0" prefHeight="349.0" prefWidth="435.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="usersProfile" text="Profile de X">
-               <VBox.margin>
-                  <Insets bottom="15.0" top="15.0" />
-               </VBox.margin></Label>
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnPrvChat" mnemonicParsing="false" onAction="#openPrivateChat" prefWidth="80.0" text="Chat privé">
+                  <Button fx:id="btnPrvChat" mnemonicParsing="false" onAction="#openPrivateChat" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #ff375e;" text="Chat privé">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                   </Button>
-                  <ImageView fx:id="profilePicture" fitHeight="84.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <Label fx:id="usersProfile" text="Profile de X" textFill="#fc385c">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
                      <HBox.margin>
-                        <Insets left="150.0" right="150.0" />
+                        <Insets left="80.0" right="80.0" />
                      </HBox.margin>
-                  </ImageView>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#startGame" prefWidth="80.0" text="Jouer" />
+                  </Label>
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #ff375e;" text="Jouer">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
                </children>
             </HBox>
             <Separator prefWidth="200.0" />
             <VBox alignment="TOP_CENTER" prefHeight="144.0" prefWidth="701.0" VBox.vgrow="NEVER">
                <children>
-                  <TextArea fx:id="desc" editable="false" VBox.vgrow="SOMETIMES">
+                  <TextArea fx:id="desc" editable="false" style="-fx-border-color: #45111b;" VBox.vgrow="SOMETIMES">
                      <VBox.margin>
                         <Insets bottom="10.0" top="15.0" />
                      </VBox.margin>
@@ -68,10 +73,13 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="45.0" prefWidth="344.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Historique" VBox.vgrow="NEVER">
+                        <Label text="Historique" textFill="#fc385c" VBox.vgrow="NEVER">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                         </Label>
                         <Separator VBox.vgrow="NEVER">
                            <opaqueInsets>
@@ -81,30 +89,45 @@
                               <Insets right="5.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
-                        <Label fx:id="histoOne" alignment="CENTER" contentDisplay="CENTER" text="Historique 1" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoOne" alignment="CENTER" contentDisplay="CENTER" text="Historique 1" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="histoTwo" alignment="CENTER" contentDisplay="CENTER" text="Historique 2" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoTwo" alignment="CENTER" contentDisplay="CENTER" text="Historique 2" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="histoThree" alignment="CENTER" contentDisplay="CENTER" text="Historique 3" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoThree" alignment="CENTER" contentDisplay="CENTER" text="Historique 3" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="histoFour" alignment="CENTER" contentDisplay="CENTER" text="Historique 4" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoFour" alignment="CENTER" contentDisplay="CENTER" text="Historique 4" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="histoFive" alignment="CENTER" contentDisplay="CENTER" text="Historique 5" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label fx:id="histoFive" alignment="CENTER" contentDisplay="CENTER" text="Historique 5" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </Label>
                         <Region VBox.vgrow="ALWAYS" />
                      </children>
@@ -112,10 +135,13 @@
                   <Separator orientation="VERTICAL" prefHeight="220.0" prefWidth="0.0" />
                   <VBox alignment="CENTER" prefHeight="222.0" prefWidth="347.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label text="Classement" VBox.vgrow="NEVER">
+                        <Label text="Classement" textFill="#fc385c" VBox.vgrow="NEVER">
                            <padding>
                               <Insets top="5.0" />
                            </padding>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
                         </Label>
                         <Separator VBox.vgrow="NEVER">
                            <opaqueInsets>
@@ -125,10 +151,13 @@
                               <Insets left="3.0" top="5.0" />
                            </VBox.margin>
                         </Separator>
-                        <Label fx:id="rankingName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefWidth="37.0" text="Intitulé" VBox.vgrow="ALWAYS">
+                        <Label fx:id="rankingName" alignment="BOTTOM_CENTER" contentDisplay="CENTER" prefHeight="79.0" prefWidth="111.0" text="Intitulé" textFill="WHITE" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
                         </Label>
                         <Region prefHeight="75.0" prefWidth="202.0" VBox.vgrow="ALWAYS" />
                      </children>

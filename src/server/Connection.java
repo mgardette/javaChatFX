@@ -39,5 +39,9 @@ public class Connection implements Runnable {
 	public void closeServer() throws IOException {
 		this.serverSocket.close();
 	}
+	
+	public String getAddress() {
+		return serverSocket.getInetAddress().getHostAddress();
+	}
 
 }

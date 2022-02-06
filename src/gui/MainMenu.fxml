@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -16,14 +18,14 @@
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
          <children>
-            <Label text="DevOps Chat" textFill="#fe375a" textOverrun="CLIP">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
+            <ImageView fitHeight="71.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/title.png" />
+               </image>
                <VBox.margin>
-                  <Insets bottom="5.0" />
+                  <Insets bottom="15.0" top="5.0" />
                </VBox.margin>
-            </Label>
+            </ImageView>
             <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox HBox.hgrow="NEVER">

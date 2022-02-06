@@ -29,9 +29,6 @@ public class NewAccountController {
     private Button create_button;
 
     @FXML
-    private TextField mail_input;
-
-    @FXML
     private PasswordField new_pass;
 
     @FXML
@@ -52,7 +49,7 @@ public class NewAccountController {
     	if(verif_saisie(stm)) {
     		ResultSet rs = stm.executeQuery("SELECT max(num_uti) + 1 as id FROM utilisateur");
         	rs.next();
-        	rs = stm.executeQuery("INSERT INTO utilisateur VALUES(" + rs.getInt("id") + ", '" + new_username.getText() + "', '" + new_pass.getText() + "', null, null)");
+        	rs = stm.executeQuery("INSERT INTO utilisateur VALUES(" + rs.getInt("id") + ", '" + new_username.getText() + "', '" + new_pass.getText() + "', default, null)");
         	currentWindow.close();
         	rs.close();
     	}

@@ -44,19 +44,6 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-            <Label text="Adresse mail">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="mail_input" layoutX="10.0" layoutY="99.0">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </TextField>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Mot de passe" HBox.hgrow="ALWAYS">

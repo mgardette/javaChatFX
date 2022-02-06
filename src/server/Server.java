@@ -37,7 +37,11 @@ public class Server {
 	public void addClient(ConnectedClient newClient) {
 		this.clients.add(newClient);
 	}
-	
+
+	public String getAddress() {
+		return connection.getAddress();
+	}
+
 	public void broadcastList(String pseudo) {
 		String listToString = "";
 		// Passage de la liste en string car sinon impossible d'envoyer

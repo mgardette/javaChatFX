@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "Pixel Operator 8";
+    src: url("pixelOperator/PixelOperator8.ttf");
+}
+
+@font-face {
+    font-family: "Pixel Operator 8";
+    src: url("pixelOperator/PixelOperator8-Bold.ttf");
+    font-weight: bold;
+}
+
+.label {
+    -fx-font-family: "Pixel Operator 8";
+}
+
+#user.label {
+	-fx-font-weight: bold;
+}

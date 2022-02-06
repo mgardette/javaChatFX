@@ -69,6 +69,16 @@ public class ProfileController {
     
     private boolean profilePerso;
     
+    /**
+     * Constructeur de la classe profile.
+     * Contient l'initialisation du nom du profil, de l'historique des 5 derniers matchs, du classement et de la description.
+     * Vérification si le visiteur est le "propriétaire" du profil pour l'activation des boutons de modifications ou la désactivation 
+     * des boutons de chat privé et de lancement de jeu
+     * @param currentwindow
+     * @param client
+     * @param visiteur
+     * @param server
+     */
     public void initialize(Stage currentwindow, String client, Client visiteur, Server server) {
     	this.profilePerso = false;
     	// TODO requete bdd pour récupérer le client associé au pseudo
@@ -204,20 +214,101 @@ public class ProfileController {
     	
 	}
     
+<<<<<<< Updated upstream
     public void calculRank() {
     	
+=======
+    /**
+     * Méthode calculant le rang du joueur et retourne un string qui sera le rang
+     * @return
+     * @throws SQLException
+     */
+    public String calculRank() throws SQLException {
+    	Statement stm;
+    	stm = DB.getConnection().createStatement();
+    	ResultSet  rs = stm.executeQuery("SELECT resultat, joueur, adversaire FROM scorejeu WHERE joueur = '" + this.user.getPseudo() + "' OR adversaire ='" + this.user.getPseudo() + "' ");
+    	int nbPoints = 300;
+    	int compteurV = 0;
+    	int compteurN = 0;
+    	int compteurD = 0;
+    	int compteurP = 0;
+		while(rs.next()) {
+			if(rs.getString("joueur").equals(this.user.getPseudo())) {
+				switch (rs.getString("resultat")) {
+				case "V":
+						compteurV++;
+					break;
+				case "N":
+						compteurN++;
+					break;
+				case "D":
+						compteurD++;
+					break;
+				}
+				
+			}
+			else {
+				switch (rs.getString("resultat")) {
+				case "V":
+						compteurD++;
+					break;
+				case "N":
+						compteurN++;
+					break;
+				case "D":
+						compteurV++;
+					break;
+				}
+			}
+			compteurP++;
+		}
+		compteurP = compteurP * 10;
+		compteurV = compteurV * 10;
+		int compteurT = nbPoints + (compteurV - compteurP);
+		String tier = "";
+		if(compteurT < 200) {
+			tier = "Bronze";
+		}
+		else if(compteurT < 400 && compteurT > 199) {
+			tier = "Argent";
+		}
+		else if(compteurT < 600 && compteurT > 399) {
+			tier = "Or";
+		}
+		else if(compteurT < 800 && compteurT > 599) {
+			tier = "Platine";
+		}
+		else if(compteurT > 799) {
+			tier = "Diamant";
+		}
+		rs.close();
+		stm.close();
+		return tier;
+>>>>>>> Stashed changes
     }
-
+    
+    /**
+     * Méthode ouvrant un chat privé avec l'utilisateur
+     * @param event
+     */
     @FXML
     public void openPrivateChat(ActionEvent event) {
 
     }
 
+    /**
+     * Méthode lançant une partie avec le joueur concerné
+     * @param event
+     */
     @FXML
     public void startGame(ActionEvent event) {
 
     }
-
+    
+    /**
+     * Bouton validant la modification de la description
+     * @param event
+     */
     @FXML
     public void validModif(ActionEvent event) {
 		try {
@@ -240,6 +331,10 @@ public class ProfileController {
 		this.modifBtn.setVisible(true);
     }
     
+    /**
+     * Bouton annulant la modification de la description
+     * @param event
+     */
     @FXML
     public void cancelModif(ActionEvent event) {
     	this.desc.setText(this.user.getDesc());
@@ -251,7 +346,11 @@ public class ProfileController {
 		this.modifBtn.setDisable(false);
 		this.modifBtn.setVisible(true);
     }
-
+    
+    /**
+     * Bouton activant la possibilité de modifier la description
+     * @param event
+     */
     @FXML
     public void modifDesc(ActionEvent event) {
     	this.desc.setEditable(true);

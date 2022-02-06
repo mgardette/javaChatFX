@@ -58,6 +58,15 @@ public class PublicChatController {
     @FXML
     private MenuItem saveConvoMenu;
     
+    /**
+     * Constructeur de la classe publicChatControlleur
+     * Initialisation du client, de la fenêtre et le lien avec le serveur.
+     * Vérification de si la fenêtre se ferme
+     * Initialisation de la liste des différents clients connectés.
+     * @param currentwindow
+     * @param client
+     * @param server
+     */
     public void initialize(Stage currentwindow, Client client, Server server) {
     	this.currentWindow = currentwindow;
     	this.client = client;
@@ -86,6 +95,9 @@ public class PublicChatController {
       }
     }
     
+    /**
+     * Méthode permettant l'envoie de message.
+     */
     public void sendText() {
     	if(!textToSend.getText().trim().isEmpty()) {
 			Message mess = new Message(client.getPseudo(), textToSend.getText());
@@ -100,10 +112,18 @@ public class PublicChatController {
 		}
     }
     
+    /**
+     * Nettoie le champ d'envoie de texte.
+     */
     public void clearText() {
     	textToSend.clear();
     }
     
+    /**
+     * Méthode permettant d'afficher le profil d'un utilisateur choisi dans la liste.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void getProfile(MouseEvent event) throws IOException {
 		String clientToShow = listToShow.getSelectionModel().getSelectedItem();
@@ -119,6 +139,10 @@ public class PublicChatController {
 		stage.showAndWait();
     }
     
+    /**
+     * Affichage d'un message envoyé par un utilisateur
+     * @param mess
+     */
     public void printNewMessage(Message mess) {
 		Platform.runLater(new Runnable() {
 			@Override

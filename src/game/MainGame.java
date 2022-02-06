@@ -7,9 +7,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * @author Noah COUPEY
+ *
+ */
 public class MainGame extends Application {
 
 	@Override
@@ -26,6 +29,10 @@ public class MainGame extends Application {
 		stage.showAndWait();
 	}
 	
+	/**
+	 * Lance le jeu
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

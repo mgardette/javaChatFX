@@ -48,7 +48,6 @@ public class Jeu {
 				plateau.placer(ligne, col, this.convertirJoueurActifEnInt());
 				correct = true;
 			}
-			plateau.printBoard();
 		}
 		return correct;
 	}

@@ -41,9 +41,6 @@ public class PublicChatController {
     private Button clearTextButton;
 
     @FXML
-    private Label connectedUsersLabel;
-
-    @FXML
     private Button sendTextButton;
 
     @FXML
@@ -199,5 +196,12 @@ public class PublicChatController {
 			alert.setContentText("Couldn't save conversation.");
 			alert.show();
 		}
+    }
+    
+    public void aProposClicked() {
+    	alert.setAlertType(AlertType.INFORMATION);
+		alert.setHeaderText("A propos");
+		alert.setContentText("Application créée par Noah COUPEY et Mathieu GARDETTE.");
+		alert.showAndWait();
     }
 }

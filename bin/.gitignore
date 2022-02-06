@@ -1,4 +1,6 @@
-/game/
 /application/
-/gui/
 /client/
+/server/
+/common/
+/game/
+/gui/

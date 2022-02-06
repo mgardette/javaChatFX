@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -28,19 +27,12 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem mnemonicParsing="false" onAction="#aProposClicked" text="About" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
          </top>
-         <bottom>
-            <Label fx:id="connectedUsersLabel" alignment="CENTER" contentDisplay="RIGHT" text="X Utilisateurs Connectés" BorderPane.alignment="TOP_LEFT">
-               <BorderPane.margin>
-                  <Insets left="5.0" />
-               </BorderPane.margin>
-            </Label>
-         </bottom>
          <center>
             <VBox BorderPane.alignment="CENTER">
                <children>

@@ -2,7 +2,7 @@ package game;
 
 public class Plateau {
 
-	private int[][] plateau = new int[6][7];
+	private int[][] plateau = new int[7][6];
 	
 	public Plateau() {
 		for(int x = 0; x < 7; x++) {
@@ -27,13 +27,13 @@ public class Plateau {
 	
 	public int verifier() {
 		int gagnant = 0;
-		for(int i = 0; i <= 5; i++) {
-			gagnant = verifLigne(i);
+		for(int x = 0; x < 7; x++) {
+			gagnant = verifLigne(x);
 			if(gagnant != 0) break;
 		}
 		if(gagnant == 0) {
-			for(int i = 0; i <= 6; i++) {
-				gagnant = verifColonne(i);
+			for(int y = 0; y < 6; y++) {
+				gagnant = verifColonne(y);
 				if(gagnant != 0) break;
 			}
 		}

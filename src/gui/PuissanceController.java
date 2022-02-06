@@ -1,16 +1,19 @@
 package gui;
 
+import java.io.File;
+
+import game.Jeu;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class PuissanceController {
 	
-	private String pseudoJ1;
-	private String pseudoJ2;
+	private Jeu jeu;
 	private Stage currentWindow;
 
 	@FXML
@@ -48,9 +51,52 @@ public class PuissanceController {
 	
 	public void initialize(Stage currentWindow, String pseudoJ1, String pseudoJ2) {
 		this.currentWindow = currentWindow;
+		currentWindow.setResizable(false);
+		this.jeu = new Jeu(pseudoJ1, pseudoJ2);
 		this.playerOneTitle.setText(pseudoJ1);
 		this.playerTwoTitle.setText(pseudoJ2);
 		this.playerStatus.setText(pseudoJ1);
+		
+		this.column0.setOnMouseClicked(e -> columnClick(e, 0));
+		this.column1.setOnMouseClicked(e -> columnClick(e, 1));
+		this.column2.setOnMouseClicked(e -> columnClick(e, 2));
+		this.column3.setOnMouseClicked(e -> columnClick(e, 3));
+		this.column4.setOnMouseClicked(e -> columnClick(e, 4));
+		this.column5.setOnMouseClicked(e -> columnClick(e, 5));
+		this.column6.setOnMouseClicked(e -> columnClick(e, 6));
+	}
+	
+	public void columnClick(MouseEvent e, int col) {
+	    ImageView imageView = new ImageView();
+		File file = new File("resources/checker_one.png");
+		if(jeu.getJoueurActif() == jeu.getJ1()) {
+			file = new File("resources/checker_two.png");
+		}
+	    imageView.setImage(new Image(file.toURI().toString()));
+	    imageView.setFitWidth(100);
+	    imageView.setFitHeight(100);
+	    VBox column = (VBox) e.getSource();
+	    column.getChildren().add(0, imageView);
+	    
+	    switch(jeu.unTour()) {
+	    case 0:
+	    	playerStatus.setText(jeu.getJoueurActif());
+	    	playerStatus.setStyle("-fx-text-fill : #5fd2ea");
+	    	if(jeu.getJoueurActif() == jeu.getJ1()) {
+	    		playerStatus.setStyle("-fx-text-fill : #ff3260");
+	    	}
+	    	break;
+	    case 1:
+	    	status.setText("Victoire de ");
+	    	playerStatus.setText(jeu.getJ1());
+	    	playerStatus.setStyle("-fx-text-fill : #ff3260");
+	    	break;
+	    case 2:
+	    	status.setText("Victoire de ");
+	    	playerStatus.setText(jeu.getJ2());
+	    	playerStatus.setStyle("-fx-text-fill : #5fd2ea");
+	    	break;
+	    };
 	}
 
 }

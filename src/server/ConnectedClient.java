@@ -49,7 +49,7 @@ public class ConnectedClient implements Runnable {
 				else if(received.getClass() == String.class) {
 					setPseudo((String) received);
 					server.broadcastMessage(new Message(this.pseudo, " vient de se connecter."));
-					server.broadcastList();
+					server.broadcastList(this.pseudo);
 				}
 			} catch (SocketException e) {
 

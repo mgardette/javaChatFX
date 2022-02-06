@@ -21,7 +21,7 @@ public class MainGame extends Application {
 		
 		Parent root = loader.load();
 		PuissanceController ctlr = loader.getController();
-		ctlr.initialize(stage, "Noah", "Mathieu");
+		ctlr.initialize(stage, "Joueur 1", "Joueur 2");
 		stage.setScene(new Scene(root));
 		stage.showAndWait();
 	}

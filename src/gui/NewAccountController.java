@@ -20,9 +20,6 @@ public class NewAccountController {
     private Button cancel_button;
 
     @FXML
-    private Label confirm_error;
-
-    @FXML
     private PasswordField confirm_pass;
 
     @FXML
@@ -35,10 +32,7 @@ public class NewAccountController {
     private TextField new_username;
 
     @FXML
-    private Label pass_error;
-
-    @FXML
-    private Label username_error;
+    private Label error_message;
     
     public void initialize(Stage currentwindow) {
 		this.currentWindow = currentwindow;
@@ -59,25 +53,22 @@ public class NewAccountController {
     private boolean verif_saisie(Statement stm) throws SQLException {
     	
     	boolean isCorrect = false;
-    	username_error.setVisible(false);
-		pass_error.setVisible(false);
-		confirm_error.setVisible(false);
 		
     	if(new_username.getText().equals("") || new_pass.getText().equals("")) {
-    		username_error.setText("Veuillez remplir tout les champs.");
-    		username_error.setVisible(true);
+    		error_message.setText("Veuillez remplir tout les champs.");
+    		error_message.setVisible(true);
     	}
     	else if(stm.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo = '" + new_username.getText() + "'").next()) { 
-    		username_error.setText("Pseudo déjà utilisé.");
-    		username_error.setVisible(true);
+    		error_message.setText("Pseudo déjà utilisé.");
+    		error_message.setVisible(true);
         }
     	else if(new_pass.getText().length() < 6) {
-    		pass_error.setText("Minimum 6 caractères.");
-    		pass_error.setVisible(true);
+    		error_message.setText("Mot de passe: Minimum 6 caractères.");
+    		error_message.setVisible(true);
     	}
     	else if(!new_pass.getText().equals(confirm_pass.getText())){
-    		confirm_error.setText("Mots de passe différents.");
-    		confirm_error.setVisible(true);
+    		error_message.setText("Mots de passe différents.");
+    		error_message.setVisible(true);
     	}
     	else {
     		isCorrect = true;

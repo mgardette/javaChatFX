@@ -49,6 +49,7 @@ public class MainMenuController {
     public void initialize(Stage currentwindow, String pseudo) {
 		this.currentWindow = currentwindow;
 		this.pseudo = pseudo;
+		currentWindow.setResizable(false);
 	}
 
     @FXML

@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="240.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AuthController">
+<AnchorPane prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #1f1b2f;" stylesheets="@../../resources/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AuthController">
    <children>
       <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Authentification" VBox.vgrow="ALWAYS">
+            <Label style="-fx-text-fill: #ff375e;" text="Authentification" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="25.0" />
                </font>
@@ -25,7 +25,7 @@
                </VBox.margin>
             </Label>
             <Separator prefWidth="200.0" />
-            <Label text="Nom d'utilisateur">
+            <Label style="-fx-text-fill: #5fd2ea;" text="Nom d'utilisateur">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -38,7 +38,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-            <Label text="Mot de passe">
+            <Label style="-fx-text-fill: #5fd2ea;" text="Mot de passe">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -51,13 +51,16 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </PasswordField>
-            <Label fx:id="no_account" onMouseReleased="#nouveau_compte" text="Je n'ai pas de compte" underline="true">
+            <Label fx:id="no_account" onMouseReleased="#nouveau_compte" style="-fx-text-fill: #ffffff;" text="Je n'ai pas de compte" underline="true">
                <font>
                   <Font size="11.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -73,7 +76,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT">
                <children>
-                  <Button fx:id="connect_button" alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#se_connecter" text="Se connecter" textAlignment="CENTER" />
+                  <Button fx:id="connect_button" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#se_connecter" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #ff375e;" text="Se connecter" textAlignment="CENTER" />
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" top="5.0" />

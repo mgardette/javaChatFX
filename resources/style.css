@@ -16,3 +16,12 @@
 #user.label {
 	-fx-font-weight: bold;
 }
+
+.button {
+	-fx-font-family: "Pixel Operator 8";
+}
+
+#bold.button {
+	-fx-font-weight: bold;
+	-fx-font-size: 14;
+}

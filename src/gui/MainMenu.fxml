@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="216.0" prefWidth="382.0" style="-fx-background-color: #1f1b2f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainMenuController">
+<AnchorPane prefHeight="239.0" prefWidth="432.0" style="-fx-background-color: #1f1b2f;" stylesheets="@../../resources/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainMenuController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -38,7 +38,7 @@
                               <Insets />
                            </VBox.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                              <Insets bottom="10.0" left="5.0" top="10.0" />
                            </padding>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -52,7 +52,7 @@
                               <Insets />
                            </VBox.margin>
                            <padding>
-                              <Insets bottom="5.0" left="5.0" top="5.0" />
+                              <Insets bottom="10.0" left="5.0" top="10.0" />
                            </padding>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -76,12 +76,12 @@
                            </VBox.margin>
                         </TextField>
                         <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                        <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" style="-fx-background-color: #ff375e;" text="Go !">
+                        <Button id="bold" fx:id="startButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #ff375e;" text="Go !">
                            <padding>
                               <Insets bottom="2.0" left="25.0" right="25.0" top="2.0" />
                            </padding>
                            <font>
-                              <Font name="System Bold" size="14.0" />
+                              <Font name="Pixel Operator 8 Bold" size="14.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" />

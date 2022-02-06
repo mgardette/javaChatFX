@@ -40,11 +40,11 @@ public class Jeu {
 		return this.fini;
 	}
 	
-	public boolean placerPiece(int col, String joueur) {
+	public boolean placerPiece(int col) {
 		boolean correct = false;
 		if(!this.fini) {
 			int ligne = plateau.getPiecePlusHauteDispo(col);
-			if(ligne != -1 && joueur.equals(joueurActif)) {
+			if(ligne != -1) {
 				plateau.placer(ligne, col, this.convertirJoueurActifEnInt());
 				correct = true;
 			}

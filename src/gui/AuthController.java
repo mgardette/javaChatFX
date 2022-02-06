@@ -40,6 +40,7 @@ public class AuthController {
     
     public void initialize(Stage currentwindow) {
 		this.currentWindow = currentwindow;
+		currentWindow.setResizable(false);
 	}
     
     public void se_connecter() throws SQLException, IOException {

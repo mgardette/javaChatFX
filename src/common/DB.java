@@ -21,8 +21,8 @@ public class DB {
 	}
 	
 	/**
-	 * Création de l'instant de la base de données
-	 * @return
+	 * Retourne l'instance unique de la base, la crée s'il n'y en a pas
+	 * @return L'instance de la base
 	 * @throws SQLException
 	 */
 	public static DB getInstance() throws SQLException {
@@ -32,6 +32,9 @@ public class DB {
 		return instance;
 	}
 
+	/**
+	 * @return La connexion à la base
+	 */
 	public static Connection getConnection() {
 		return connection;
 	}

@@ -11,10 +11,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * @author Noah COUPEY
+ *
+ */
 public class PuissanceController {
 	
+	/**
+	 * Partie liée au controleur
+	 */
 	private Jeu jeu;
+	/**
+	 * Stage que le controleur influe 
+	 */
 	private Stage currentWindow;
+	/**
+	 * Pseudo du client (Non implémenté)
+	 */
 	private String joueur;
 
 	@FXML
@@ -50,6 +63,12 @@ public class PuissanceController {
 	@FXML
 	private Label status;
 	
+	/**
+	 * Permet d'initiliser certaines informations avant que la fenêtre s'ouvre
+	 * @param currentWindow Stage actuel
+	 * @param pseudoJ1 Pseudo du joueur 1
+	 * @param pseudoJ2 Pseudo du joueur 2
+	 */
 	public void initialize(Stage currentWindow, String pseudoJ1, String pseudoJ2) {
 		this.currentWindow = currentWindow;
 		currentWindow.setResizable(false);
@@ -68,6 +87,11 @@ public class PuissanceController {
 		this.column6.setOnMouseClicked(e -> columnClick(e, 6));
 	}
 	
+	/**
+	 * Permet de placer une pièce dans la colonne sélectionnée, et afficher les changements
+	 * @param e Clic de la souris
+	 * @param col Colonne cliquée
+	 */
 	public void columnClick(MouseEvent e, int col) {
 		
 		if(jeu.placerPiece(col)) {
@@ -86,6 +110,9 @@ public class PuissanceController {
 	    
 	}
 	
+	/**
+	 * Met en place les changements visuels pour le tour suivant
+	 */
 	private void setupProchainTour() {
 		switch(jeu.prochainTour()) {
 	    case 0:

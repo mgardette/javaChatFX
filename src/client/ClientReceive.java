@@ -10,18 +10,35 @@ import java.util.ArrayList;
 import common.Message;
 import server.ConnectedClient;
 
+/**
+ * @author Noah COUPEY
+ * @author Mathieu GARDETTE
+ *
+ */
 public class ClientReceive implements Runnable {
 
 	private Client client;
 	private Socket socket;
 	private ObjectInputStream in;
 	
+	/**
+	 * Constructeur de la classe ClientReceive.
+	 * Initialisation des variables de classes passées au préalable en paramètre
+	 * @param client
+	 * @param socket
+	 */
 	public ClientReceive(Client client, Socket socket) {
 		super();
 		this.client = client;
 		this.socket = socket;
 	}
-
+	
+	/**
+	 * Run du thread de la classe Client.java
+	 * Récupération des informations envoyées depuis le serveur
+	 * Si c'est un Message on fait appel à messageReceived - Ce sera pour l'affichage du nouveau message d'un des clients
+	 * Si c'est un String on fait appel à clientsListReceived - Ce sera quand un utilisateur se déconnecte/connecte pour l'ajouter/supprimer à la liste
+	 */
 	@Override
 	public void run() {
 		

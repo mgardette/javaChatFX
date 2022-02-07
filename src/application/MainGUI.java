@@ -4,21 +4,20 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import client.Client;
-import client.ClientPanel;
 import common.DB;
 import gui.AuthController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 
+/**
+ * @author Noah COUPEY
+ * @author Mathieu GARDETTE
+ *
+ */
 public class MainGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -41,6 +40,10 @@ public class MainGUI extends Application {
 		}
 	}
 	
+	/**
+	 * Lance l'application principale
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

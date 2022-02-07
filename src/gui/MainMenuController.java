@@ -19,39 +19,83 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import server.Server;
 
+/**
+ * @author Noah COUPEY
+ *
+ */
 public class MainMenuController {
 	
+	/**
+	 * Regex verifiant le format de l'adresse
+	 */
 	private static final Pattern ADDRESS = Pattern.compile("^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
 	
+	/**
+	 * Regex vérifiant le format du port
+	 */
 	private static final Pattern PORT = Pattern.compile("^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$");
 	
+	/**
+	 * Stage actuel
+	 */
 	private Stage currentWindow;
+	
+	/**
+	 * Pseudo de l'utilisateur
+	 */
 	private String pseudo;
 
+	/**
+	 * Champ de texte pour l'adresse du serveur
+	 */
 	@FXML
     private TextField addressInput;
 
+    /**
+     * Label permettant de sélectionner le menu Host
+     */
     @FXML
     private Label hostLabel;
 
+    /**
+     * Label permettant de selectionner le menu Join
+     */
     @FXML
     private Label joinLabel;
 
+    /**
+     * Champ de texte pour le port du serveur
+     */
     @FXML
     private TextField portInput;
 
+    /**
+     * Bouton pour lancer et/ou rejoindre un serveur
+     */
     @FXML
     private Button startButton;
     
+    /**
+     * Label qui indique l'erreur survenue
+     */
     @FXML
     private Label errorLabel;
     
+    
+    /**
+     * Permet d'initialiser certaines informations avant que la fenêtre s'ouvre
+	 * @param currentWindow Stage actuel
+     * @param pseudo Pseudo de l'utilisateur
+     */
     public void initialize(Stage currentwindow, String pseudo) {
 		this.currentWindow = currentwindow;
 		this.pseudo = pseudo;
 		currentWindow.setResizable(false);
 	}
 
+    /**
+     * Permet de changer l'affichage lorsque le label Host est cliqué
+     */
     @FXML
     void hostClicked() {
     	hostLabel.setStyle("-fx-background-color :  #5fd2ea");
@@ -61,6 +105,9 @@ public class MainMenuController {
     	addressInput.setDisable(true);
     }
 
+    /**
+     * Permet de changer l'affichage lorsque le label Join est cliqué
+     */
     @FXML
     void joinClicked() {
     	joinLabel.setStyle("-fx-background-color :  #5fd2ea");
@@ -70,6 +117,12 @@ public class MainMenuController {
     	addressInput.setDisable(false);
     }
 
+    
+    /**
+     * Lance le client (et serveur si Host est selectionné).
+     * Affiche l'erreur si le client ou serveur n'a pas pu se lancer.
+     * @throws UnknownHostException
+     */
     @FXML
     void startButtonClicked() throws UnknownHostException {
     	if(PORT.matcher(portInput.getText()).matches() && addressInput.isDisabled()) {
@@ -92,6 +145,13 @@ public class MainMenuController {
     	}
     }
     
+    
+    /**
+     * Lance la fenêtre du chat public et initialise le client
+     * @param address Adresse du serveur
+     * @param port Port du serveur
+     * @param server Serveur créé
+     */
     public void bootClient(String address, int port, Server server) {
     	try {
     		currentWindow.close();

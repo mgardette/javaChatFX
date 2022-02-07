@@ -14,30 +14,59 @@ import javafx.stage.Stage;
 
 public class NewAccountController {
 	
+	/**
+	 * Stage actuel
+	 */
 	private Stage currentWindow;
 	
+    /**
+     * Bouton d'annulation
+     */
     @FXML
     private Button cancel_button;
 
+    /**
+     * Champ de texte pour confirmer le mot de passe
+     */
     @FXML
     private PasswordField confirm_pass;
 
+    /**
+     * Bouton de validation de création de compte
+     */
     @FXML
     private Button create_button;
 
+    /**
+     * Champ de texte pour le mot de passe
+     */
     @FXML
     private PasswordField new_pass;
 
+    /**
+     * Champ de texte pour le pseudo de l'utilisateur
+     */
     @FXML
     private TextField new_username;
 
+    /**
+     * Label affichant les messages d'erreur
+     */
     @FXML
     private Label error_message;
     
+    /**
+     * Permet d'initialiser certaines informations avant que la fenêtre s'ouvre
+	 * @param currentWindow Stage actuel
+     */
     public void initialize(Stage currentwindow) {
 		this.currentWindow = currentwindow;
 	}
     
+    /**
+     * Permet de rentrer les informations saisies dans les champs dans la base de données
+     * @throws SQLException
+     */
     public void creer_compte() throws SQLException {
     	Statement stm = DB.getConnection().createStatement();
     	if(verif_saisie(stm)) {
@@ -50,6 +79,12 @@ public class NewAccountController {
         stm.close();
     }
     
+    /**
+     * Vérifie les champs de texte pour vérifier qu'ils sont conformes aux règles imposées
+     * @param stm Statement SQL pour accéder à la base
+     * @return True si les champs sont siasis correctement, False s'il ne le sont pas
+     * @throws SQLException
+     */
     private boolean verif_saisie(Statement stm) throws SQLException {
     	
     	boolean isCorrect = false;
@@ -76,6 +111,9 @@ public class NewAccountController {
     	return isCorrect;
     }
     
+    /**
+     * Ferme la fenêtre actuelle
+     */
     public void annuler() {
     	currentWindow.close();
     }

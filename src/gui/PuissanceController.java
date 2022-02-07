@@ -30,41 +30,75 @@ public class PuissanceController {
 	 */
 	private String joueur;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column0;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column1;
 
+	/**
+	 * Colonne du jeu
+	 *
+	 */
 	@FXML
 	private VBox column2;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column3;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column4;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column5;
 
+	/**
+	 * Colonne du jeu
+	 */
 	@FXML
 	private VBox column6;
 
+	/**
+	 * Nom du joueur un situé dans le header
+	 */
 	@FXML
 	private Label playerOneTitle;
 
+	/**
+	 * Joueur concerné dans le statut de la partie situé dans le footer
+	 */
 	@FXML
 	private Label playerStatus;
 
+	/**
+	 * Nom du joueur deux situé dans le header
+	 */
 	@FXML
 	private Label playerTwoTitle;
 
+	/**
+	 * Statut de la partie située dans le footer
+	 */
 	@FXML
 	private Label status;
 	
 	/**
-	 * Permet d'initiliser certaines informations avant que la fenêtre s'ouvre
+	 * Permet d'initialiser certaines informations avant que la fenêtre s'ouvre
 	 * @param currentWindow Stage actuel
 	 * @param pseudoJ1 Pseudo du joueur 1
 	 * @param pseudoJ2 Pseudo du joueur 2

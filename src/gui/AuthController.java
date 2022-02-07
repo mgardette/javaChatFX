@@ -17,27 +17,55 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * @author Noah COUPEY
+ *
+ */
 public class AuthController {
 	
+	/**
+	 * Stage sur lequel le controleur influe
+	 */
 	private Stage currentWindow;
 
+    /**
+     * Bouton de connection
+     */
     @FXML
     private Button connect_button;
 
+    /**
+     * Champ de texte pour le mot de passe
+     */
     @FXML
     private PasswordField pass_input;
 
+    /**
+     * Champ de texte pour le pseudo
+     */
     @FXML
     private TextField pseudo_input;
     
+    /**
+     * Message d'erreur s'affichant s'il y en a
+     */
     @FXML
     private Label input_error;
     
+    /**
+     * Permet d'initialier certaines informations avant que la fenêtre s'ouvre
+     * @param currentwindow Stage sur lequel le controleur influe
+     */
     public void initialize(Stage currentwindow) {
 		this.currentWindow = currentwindow;
 		currentWindow.setResizable(false);
 	}
     
+    /**
+     * Ouvre le menu principal de l'application, sauf si l'utilisateur s'est trompé dans ses identifaints
+     * @throws SQLException
+     * @throws IOException
+     */
     public void se_connecter() throws SQLException, IOException {
     	Statement stm = DB.getConnection().createStatement();
 		ResultSet rs = stm.executeQuery("SELECT pseudo FROM utilisateur WHERE pseudo = '" + pseudo_input.getText() + "' AND mdp = '" + pass_input.getText() +"'");
@@ -61,6 +89,10 @@ public class AuthController {
     	stm.close();
     }
     
+    /**
+     * Ouvre le menu pour se créer un nouveau compte sur l'application
+     * @throws IOException
+     */
     public void nouveau_compte() throws IOException {
     	Stage stage = new Stage();
 		FXMLLoader loader = new FXMLLoader();

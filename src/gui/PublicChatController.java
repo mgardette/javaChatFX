@@ -28,6 +28,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import server.Server;
 
+/**
+ * @author Mathieu GARDETTE
+ * @author Noah COUPEY
+ *
+ */
 public class PublicChatController {
 
 	private Stage currentWindow;
@@ -58,6 +63,15 @@ public class PublicChatController {
     @FXML
     private MenuItem saveConvoMenu;
     
+    /**
+     * Constructeur de la classe publicChatControlleur
+     * Initialisation du client, de la fenêtre et le lien avec le serveur.
+     * Vérification de si la fenêtre se ferme
+     * Initialisation de la liste des différents clients connectés.
+     * @param currentwindow
+     * @param client
+     * @param server
+     */
     public void initialize(Stage currentwindow, Client client, Server server) {
     	this.currentWindow = currentwindow;
     	this.client = client;
@@ -86,6 +100,9 @@ public class PublicChatController {
       }
     }
     
+    /**
+     * Méthode permettant l'envoie de message.
+     */
     public void sendText() {
     	if(!textToSend.getText().trim().isEmpty()) {
 			Message mess = new Message(client.getPseudo(), textToSend.getText());
@@ -100,10 +117,18 @@ public class PublicChatController {
 		}
     }
     
+    /**
+     * Nettoie le champ d'envoie de texte.
+     */
     public void clearText() {
     	textToSend.clear();
     }
     
+    /**
+     * Méthode permettant d'afficher le profil d'un utilisateur choisi dans la liste.
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void getProfile(MouseEvent event) throws IOException {
 		String clientToShow = listToShow.getSelectionModel().getSelectedItem();
@@ -119,6 +144,10 @@ public class PublicChatController {
 		stage.showAndWait();
     }
     
+    /**
+     * Affichage d'un message envoyé par un utilisateur
+     * @param mess
+     */
     public void printNewMessage(Message mess) {
 		Platform.runLater(new Runnable() {
 			@Override
@@ -130,7 +159,9 @@ public class PublicChatController {
 		});
 	}
     
-
+    /**
+     * Méthode concernant la fermeture de la session
+     */
     public void close() {
     	if(isServer) {
     		server.broadcastMessage(new Message("Server", "Shut Down."));
@@ -145,10 +176,16 @@ public class PublicChatController {
     	}
     }
     
+    /**
+     * Méthode permettant de désactivé l'envoie du texte
+     */
     public void disableSend() {
     	sendTextButton.setDisable(true);
     }
     
+    /**
+     * Méthode permettant de rafraîchir à chaque nouvelle connexion la liste d'utilisateurs
+     */
     public void printClientsList() {
     	String clients = this.client.getListClients();
         String[] listClients = clients.split(";");
@@ -165,7 +202,10 @@ public class PublicChatController {
 				}
 		});
     }
-
+    
+    /**
+     * Méthode permettant la sauvegarde de la conversation
+     */
     public void saveConversation() {
     	StringBuilder sb = new StringBuilder();
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm, dd/MM/yyyy");
@@ -179,6 +219,10 @@ public class PublicChatController {
     	createFile(sb.toString());
     }
     
+    /**
+     * Méthode prenant en paramètre le text (String) voulant être sauvegardé
+     * @param text
+     */
     private void createFile(String text) {
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
     	String filePath = "C:\\Users\\" + System.getProperty("user.name") + "\\DevOpsChat\\Logs\\log_" + dtf.format(LocalDateTime.now()) + ".txt";
@@ -198,6 +242,9 @@ public class PublicChatController {
 		}
     }
     
+    /**
+     * Méthode générant le "à propos"
+     */
     public void aProposClicked() {
     	alert.setAlertType(AlertType.INFORMATION);
 		alert.setHeaderText("A propos");

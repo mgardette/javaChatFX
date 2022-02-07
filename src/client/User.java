@@ -1,5 +1,9 @@
 package client;
 
+/**
+ * @author Mathieu GARDETTE
+ *
+ */
 public class User {
 	private String pseudo;
 	private String mdp;

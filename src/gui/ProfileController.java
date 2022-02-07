@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import server.Server;
 
+/**
+ * @author Mathieu GARDETTE
+ *
+ */
 public class ProfileController {
 
     @FXML
@@ -70,6 +74,16 @@ public class ProfileController {
     
     private boolean profilePerso;
     
+    /**
+     * Constructeur de la classe profile.
+     * Contient l'initialisation du nom du profil, de l'historique des 5 derniers matchs, du classement et de la description.
+     * Vérification si le visiteur est le "propriétaire" du profil pour l'activation des boutons de modifications ou la désactivation 
+     * des boutons de chat privé et de lancement de jeu
+     * @param currentwindow
+     * @param client
+     * @param visiteur
+     * @param server
+     */
     public void initialize(Stage currentwindow, String client, Client visiteur, Server server) {
     	this.profilePerso = false;
     	// TODO requete bdd pour récupérer le client associé au pseudo
@@ -248,6 +262,11 @@ public class ProfileController {
 		}
 	}
     
+    /**
+     * Méthode calculant le rang du joueur et retourne un string qui sera le rang
+     * @return
+     * @throws SQLException
+     */
     public String calculRank() throws SQLException {
     	Statement stm;
     	stm = DB.getConnection().createStatement();
@@ -310,17 +329,29 @@ public class ProfileController {
 		stm.close();
 		return tier;
     }
-
+    
+    /**
+     * Méthode ouvrant un chat privé avec l'utilisateur
+     * @param event
+     */
     @FXML
     public void openPrivateChat(ActionEvent event) {
 
     }
 
+    /**
+     * Méthode lançant une partie avec le joueur concerné
+     * @param event
+     */
     @FXML
     public void startGame(ActionEvent event) {
 
     }
-
+    
+    /**
+     * Bouton validant la modification de la description
+     * @param event
+     */
     @FXML
     public void validModif(ActionEvent event) {
 		try {
@@ -343,6 +374,10 @@ public class ProfileController {
 		this.modifBtn.setVisible(true);
     }
     
+    /**
+     * Bouton annulant la modification de la description
+     * @param event
+     */
     @FXML
     public void cancelModif(ActionEvent event) {
     	this.desc.setText(this.user.getDesc());
@@ -354,7 +389,11 @@ public class ProfileController {
 		this.modifBtn.setDisable(false);
 		this.modifBtn.setVisible(true);
     }
-
+    
+    /**
+     * Bouton activant la possibilité de modifier la description
+     * @param event
+     */
     @FXML
     public void modifDesc(ActionEvent event) {
     	this.desc.setEditable(true);

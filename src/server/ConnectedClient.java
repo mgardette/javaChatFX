@@ -10,6 +10,11 @@ import java.util.ArrayList;
 
 import common.Message;
 
+/**
+ * @author Noah COUPEY
+ * @author Mathieu GARDETTE
+ *
+ */
 public class ConnectedClient implements Runnable {
 
 	private static int idCounter = 0;
@@ -19,6 +24,11 @@ public class ConnectedClient implements Runnable {
 	private ObjectInputStream in;
 	private String pseudo;
 	
+	/**
+	 * Constructeur de la classe connectedClient
+	 * @param server
+	 * @param socket
+	 */
 	public ConnectedClient(Server server, Socket socket) {
 		super();
 		this.server = server;
@@ -31,7 +41,10 @@ public class ConnectedClient implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Méthode permettant l'envoie de message à la connexion d'un client
+	 */
 	@Override
 	public void run() {
 		try {
@@ -63,6 +76,10 @@ public class ConnectedClient implements Runnable {
 		}
 	}
 	
+	/**
+	 * Méthode permettant l'envoie d'un objet passé en paramètre
+	 * @param object
+	 */
 	public void sendMessage(Object object) {
 		try {
 			this.out.writeObject(object);
@@ -72,6 +89,9 @@ public class ConnectedClient implements Runnable {
 		}
 	}
 	
+	/**
+	 * Méthode permettant la fermeture de la connexion du client
+	 */
 	public void closeClient() {
 		try {
 			this.in.close();
@@ -82,14 +102,26 @@ public class ConnectedClient implements Runnable {
 		}
 	}
 
+	/**
+	 * Getter du pseudo du client
+	 * @return
+	 */
 	public String getPseudo() {
 		return pseudo;
 	}
 	
+	/**
+	 * Setter du pseudo du client
+	 * @param pseudo
+	 */
 	private void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
 	
+	/**
+	 * Getter du compteur
+	 * @return
+	 */
 	public int getCount() {
 		return idCounter;
 	}

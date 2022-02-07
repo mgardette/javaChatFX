@@ -17,6 +17,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import server.Server;
 
+/**
+ * @author Mathieu GARDETTE
+ *
+ */
 public class ProfileController {
 
     @FXML

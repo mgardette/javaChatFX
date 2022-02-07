@@ -28,6 +28,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import server.Server;
 
+/**
+ * @author Mathieu GARDETTE
+ * @author Noah COUPEY
+ *
+ */
 public class PublicChatController {
 
 	private Stage currentWindow;
@@ -154,7 +159,9 @@ public class PublicChatController {
 		});
 	}
     
-
+    /**
+     * Méthode concernant la fermeture de la session
+     */
     public void close() {
     	if(isServer) {
     		server.broadcastMessage(new Message("Server", "Shut Down."));
@@ -169,10 +176,16 @@ public class PublicChatController {
     	}
     }
     
+    /**
+     * Méthode permettant de désactivé l'envoie du texte
+     */
     public void disableSend() {
     	sendTextButton.setDisable(true);
     }
     
+    /**
+     * Méthode permettant de rafraîchir à chaque nouvelle connexion la liste d'utilisateurs
+     */
     public void printClientsList() {
     	String clients = this.client.getListClients();
         String[] listClients = clients.split(";");
@@ -189,7 +202,10 @@ public class PublicChatController {
 				}
 		});
     }
-
+    
+    /**
+     * Méthode permettant la sauvegarde de la conversation
+     */
     public void saveConversation() {
     	StringBuilder sb = new StringBuilder();
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm, dd/MM/yyyy");
@@ -203,6 +219,10 @@ public class PublicChatController {
     	createFile(sb.toString());
     }
     
+    /**
+     * Méthode prenant en paramètre le text (String) voulant être sauvegardé
+     * @param text
+     */
     private void createFile(String text) {
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
     	String filePath = "C:\\Users\\" + System.getProperty("user.name") + "\\DevOpsChat\\Logs\\log_" + dtf.format(LocalDateTime.now()) + ".txt";
@@ -222,6 +242,9 @@ public class PublicChatController {
 		}
     }
     
+    /**
+     * Méthode générant le "à propos"
+     */
     public void aProposClicked() {
     	alert.setAlertType(AlertType.INFORMATION);
 		alert.setHeaderText("A propos");

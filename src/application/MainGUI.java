@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import client.Client;
-import client.ClientPanel;
 import common.DB;
 import gui.AuthController;
 import javafx.application.Application;

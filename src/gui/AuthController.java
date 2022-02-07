@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import client.Client;
-import client.ClientPanel;
 import common.DB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

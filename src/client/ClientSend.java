@@ -7,17 +7,30 @@ import java.util.Scanner;
 
 import common.Message;
 
+/**
+ * @author Noah COUPEY
+ *
+ */
 public class ClientSend implements Runnable {
 	
 	private Socket socket;
 	private ObjectOutputStream out;
 	
+	/**
+	 * Constructeur de la classe ClientSend
+	 * Initialisation des variables de classes passées au préalable en paramètres
+	 * @param socket
+	 * @param out
+	 */
 	public ClientSend(Socket socket, ObjectOutputStream out) {
 		super();
 		this.socket = socket;
 		this.out = out;
 	}
-
+	
+	/**
+	 * Envoie du nouveau message au serveur pour qu'ensuite le serveur l'envoie à tous les utilisateurs
+	 */
 	@Override
 	public void run() {
 		Scanner sc = new Scanner(System.in);

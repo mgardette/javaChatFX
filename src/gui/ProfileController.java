@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -247,10 +248,12 @@ public class ProfileController {
     		this.btnPlay.setDisable(true);
     		this.btnPlay.setVisible(false);
 		}
+		File file;
 		try {
-	    	String rank;
-			rank = calculRank();
-	    	this.rankingName.setText(rank);
+			file = calculRank();
+		    this.rankingPicture.setImage(new Image(file.toURI().toString()));
+		    this.rankingPicture.setFitWidth(150);
+		    this.rankingPicture.setFitHeight(150);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -262,7 +265,7 @@ public class ProfileController {
      * @return
      * @throws SQLException
      */
-    public String calculRank() throws SQLException {
+    public File calculRank() throws SQLException {
     	Statement stm;
     	stm = DB.getConnection().createStatement();
     	ResultSet  rs = stm.executeQuery("SELECT resultat, joueur, adversaire FROM scorejeu WHERE joueur = '" + this.user.getPseudo() + "' OR adversaire ='" + this.user.getPseudo() + "' ");
@@ -305,24 +308,25 @@ public class ProfileController {
 		compteurV = compteurV * 10;
 		int compteurT = nbPoints + (compteurV - compteurP);
 		String tier = "";
+		File file = new File("resources/medal_bronze.png");
 		if(compteurT < 200) {
-			tier = "Bronze";
+			file = new File("resources/medal_bronze.png");
 		}
 		else if(compteurT < 400 && compteurT > 199) {
-			tier = "Argent";
+			file = new File("resources/medal_silver.png");
 		}
 		else if(compteurT < 600 && compteurT > 399) {
-			tier = "Or";
+			file = new File("resources/medal_gold.png");
 		}
 		else if(compteurT < 800 && compteurT > 599) {
-			tier = "Platine";
+			file = new File("resources/medal_platinum.png");
 		}
 		else if(compteurT > 799) {
-			tier = "Diamant";
+			file = new File("resources/medal_champ.png");
 		}
 		rs.close();
 		stm.close();
-		return tier;
+		return file;
     }
 
     /**

@@ -27,9 +27,6 @@ public class ProfileController {
     private Button btnPlay;
 
     @FXML
-    private Button btnPrvChat;
-
-    @FXML
     private Button cancelBtn;
     
     @FXML
@@ -249,8 +246,6 @@ public class ProfileController {
     		this.modifBtn.setVisible(true);
     		this.btnPlay.setDisable(true);
     		this.btnPlay.setVisible(false);
-    		this.btnPrvChat.setDisable(true);
-    		this.btnPrvChat.setVisible(false);
 		}
 		try {
 	    	String rank;
@@ -328,15 +323,6 @@ public class ProfileController {
 		rs.close();
 		stm.close();
 		return tier;
-    }
-    
-    /**
-     * Méthode ouvrant un chat privé avec l'utilisateur
-     * @param event
-     */
-    @FXML
-    public void openPrivateChat(ActionEvent event) {
-
     }
 
     /**

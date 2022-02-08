@@ -18,23 +18,15 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnPrvChat" mnemonicParsing="false" onAction="#openPrivateChat" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #ff375e;" text="Chat privé">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="usersProfile" text="Profile de X" textFill="#fc385c">
+                  <Label fx:id="usersProfile" text="Profil de X" textFill="#fc385c">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="80.0" right="80.0" />
+                        <Insets left="170.0" right="80.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #ff375e;" text="Jouer">
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#startGame" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #ff375e;" text="Jouer">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font></Button>
